@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hack King • Prime Accounts</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
+    
+    * { font-family: 'Inter', sans-serif; }
+    .heading-font { font-family: 'Space Grotesk', sans-serif; }
+    
+    body {
+      background: linear-gradient(145deg, #0f172a 0%, #1e1133 100%);
+      color: #f8fafc;
+    }
+    
+    .nav-link {
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .nav-link:hover {
+      transform: translateY(-2px);
+      color: #f97316 !important;
+    }
+    
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 20px 25px -5px rgb(249 115 22 / 0.3), 0 8px 10px -6px rgb(168 85 247 / 0.3);
+    }
+    
+    .neon-text {
+      text-shadow: 0 0 20px #f97316, 0 0 40px #a855f7;
+    }
+    
+    .section-header {
+      background: linear-gradient(to right, #f97316, #a855f7, #22c55e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .product-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    
+    .img-placeholder {
+      background: linear-gradient(145deg, #1e2937, #334155);
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .whatsapp-btn {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Navigation (EXACT same as your index.html & hacks.html) -->
+  <nav class="bg-white/95 backdrop-blur-xl shadow-lg sticky top-0 z-50 border-b border-orange-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="bg-gradient-to-br from-orange-500 via-purple-500 to-green-400 p-3 rounded-2xl shadow-inner">
+            <i class="fas fa-crown text-white text-3xl drop-shadow-md"></i>
+          </div>
+          <div>
+            <span class="heading-font text-3xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-purple-600">Hack</span>
+            <span class="heading-font text-3xl font-bold tracking-tighter text-slate-800">King</span>
+          </div>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-8 text-base font-semibold text-slate-700">
+          <a href="index.html" class="nav-link flex items-center gap-1">
+            <i class="fas fa-home"></i> Home
+          </a>
+          <a href="accounts.html" class="nav-link flex items-center gap-1 text-orange-600">
+            <i class="fas fa-fire"></i> Prime Accounts
+          </a>
+          <a href="hacks.html" class="nav-link flex items-center gap-1">
+            <i class="fas fa-bolt"></i> Hacks & Panels
+          </a>
+        </div>
+
+        <!-- WhatsApp CTA -->
+        <a href="https://wa.me/2349124805162" target="_blank"
+           class="hidden md:flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-3xl font-semibold text-sm transition-colors">
+          <i class="fab fa-whatsapp text-xl"></i>
+          <span>Chat on WhatsApp</span>
+        </a>
+
+        <!-- Mobile Hamburger -->
+        <button onclick="toggleMobileMenu()" class="md:hidden text-3xl text-slate-700 hover:text-orange-600 transition-colors">
+          <i class="fas fa-bars" id="hamburger-icon"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-orange-100 px-4 py-6">
+      <div class="flex flex-col gap-6 text-lg font-medium">
+        <a href="index.html" class="flex items-center gap-3">
+          <i class="fas fa-home"></i> Home
+        </a>
+        <a href="accounts.html" class="flex items-center gap-3 text-orange-600">
+          <i class="fas fa-fire"></i> Prime Accounts
+        </a>
+        <a href="hacks.html" class="flex items-center gap-3">
+          <i class="fas fa-bolt"></i> Hacks & Panels
+        </a>
+        <a href="https://wa.me/2349124805162" target="_blank"
+           class="mt-4 flex items-center justify-center gap-3 bg-green-500 text-white py-4 rounded-3xl font-semibold">
+          <i class="fab fa-whatsapp text-2xl"></i> Chat Directly on WhatsApp
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero for Accounts Page -->
+  <header class="hero-bg pt-16 pb-20 md:pt-24 md:pb-28 text-center relative overflow-hidden" style="background: linear-gradient(90deg, rgba(249, 115, 22, 0.9) 0%, rgba(168, 85, 247, 0.85) 100%); box-shadow: 0 25px 50px -12px rgb(249 115 22);">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md text-white text-sm font-medium px-6 py-2 rounded-3xl mb-6">
+        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+        VERIFIED • CLEAN HISTORY • INSTANT LOGIN
+      </div>
+      
+      <h1 class="heading-font text-5xl md:text-7xl font-bold leading-none tracking-tighter neon-text mb-4">
+        PRIME ACCOUNTS<br>TIER 1 — 8
+      </h1>
+      
+      <p class="text-xl md:text-2xl text-white/90 max-w-lg mx-auto">
+        Fully loaded Free Fire accounts • Rare skins • Diamonds • Elite Passes • Legendary Bundles
+      </p>
+
+      <div class="flex justify-center mt-10">
+        <a href="https://wa.me/2349124805162" target="_blank"
+           class="bg-white text-slate-900 hover:bg-orange-100 px-10 py-5 rounded-3xl font-semibold text-xl flex items-center gap-4">
+          <i class="fab fa-whatsapp text-4xl text-green-500"></i>
+          GET YOUR PRIME ACCOUNT NOW
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Accounts Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="prime-accounts-grid"></div>
+
+  </main>
+
+  <!-- Final CTA -->
+  <div class="bg-gradient-to-r from-orange-500 to-purple-600 py-16 text-center">
+    <div class="max-w-2xl mx-auto px-4">
+      <p class="text-3xl font-bold mb-4">Ready for your own god-tier account?</p>
+      <p class="text-xl text-white/90 mb-8">Choose any Tier 1–8 Prime account above and message us instantly on WhatsApp. Login details delivered in minutes.</p>
+      <a href="https://wa.me/2349124805162" target="_blank"
+         class="inline-flex items-center gap-4 bg-white text-slate-900 px-10 py-5 rounded-3xl text-2xl font-semibold hover:scale-105 transition-transform">
+        <i class="fab fa-whatsapp text-4xl text-green-500"></i>
+        +234 912 480 5162
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer (EXACT same as your index.html & hacks.html) -->
+  <footer class="bg-slate-950 py-12 text-white/70">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-sm">© 2026 Hack King — Elite Gaming Hub</p>
+      <p class="text-xs mt-2">All transactions are simulated for demo purposes only. For educational and entertainment use.</p>
+      <div class="flex justify-center gap-6 mt-8 text-2xl">
+        <i class="fab fa-whatsapp cursor-pointer hover:text-green-400"></i>
+        <i class="fab fa-telegram cursor-pointer hover:text-blue-400"></i>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const WA_NUMBER = "2349124805162";
+    const BASE_WA_URL = `https://wa.me/${WA_NUMBER}?text=`;
+
+    function generateWAMessage(accountName) {
+      const msg = `I want to buy from Hack King: ${accountName}. Clean Prime account, ready for instant login. Please send payment details and account credentials.`;
+      return encodeURIComponent(msg);
+    }
+
+    const primeAccountsData = [
+      {
+        tier: "TIER 1",
+        name: "Starter Prime Account",
+        desc: "Freshly created Prime account with elite pass unlocked, 2500+ diamonds, starter legendary skin bundle and clean play history.",
+        icon: "fas fa-seedling"
+      },
+      {
+        tier: "TIER 2",
+        name: "Rising Prime Account",
+        desc: "Solid Tier 2 Prime loaded with rare weapon skins, 4000 diamonds, elite battle pass rewards and multiple exclusive emotes.",
+        icon: "fas fa-fire"
+      },
+      {
+        tier: "TIER 3",
+        name: "Veteran Prime Account",
+        desc: "Well-established Tier 3 account featuring limited-time bundles, 6000 diamonds, full elite pass collection and high KD history.",
+        icon: "fas fa-shield-alt"
+      },
+      {
+        tier: "TIER 4",
+        name: "Elite Prime Account",
+        desc: "Premium Tier 4 Prime with legendary character bundles, 8500 diamonds, rare vehicle skins and complete seasonal rewards.",
+        icon: "fas fa-gem"
+      },
+      {
+        tier: "TIER 5",
+        name: "Pro Prime Account",
+        desc: "High-level Tier 5 account stacked with exclusive mythic skins, 11000 diamonds, maxed battle pass and tournament-ready setup.",
+        icon: "fas fa-trophy"
+      },
+      {
+        tier: "TIER 6",
+        name: "Master Prime Account",
+        desc: "Tier 6 Prime loaded with ultra-rare bundles, 14000 diamonds, all limited edition skins and verified clean account history.",
+        icon: "fas fa-crown"
+      },
+      {
+        tier: "TIER 7",
+        name: "Legendary Prime Account",
+        desc: "God-tier Tier 7 account with 17000+ diamonds, every legendary skin available, elite passes from multiple seasons and max prestige.",
+        icon: "fas fa-dragon"
+      },
+      {
+        tier: "TIER 8",
+        name: "God Tier Prime Account",
+        desc: "Ultimate Tier 8 Prime — fully maxed with 20000+ diamonds, all rarest bundles, mythic weapons, lifetime elite status and flawless record.",
+        icon: "fas fa-star"
+      }
+    ];
+
+    function createAccountCard(tier, name, desc, icon) {
+      const card = document.createElement("div");
+      card.className = `product-card rounded-3xl overflow-hidden card-hover`;
+
+      card.innerHTML = `
+        <div class="img-placeholder">
+          <i class="${icon} text-8xl text-white/90 drop-shadow-2xl"></i>
+          <span class="absolute top-4 right-4 bg-gradient-to-r from-orange-500 to-purple-600 text-white text-xs font-black px-4 py-1 rounded-3xl backdrop-blur-md shadow-inner">${tier}</span>
+        </div>
+
+        <!-- WhatsApp button UNDER the picture -->
+        <div class="px-6 -mt-7 relative z-10">
+          <button onclick="orderViaWA(this)" 
+                  class="whatsapp-btn w-full bg-[#25D366] hover:bg-[#22c35a] text-white font-bold py-4 px-6 rounded-3xl flex items-center justify-center gap-3 shadow-2xl text-lg">
+            <i class="fab fa-whatsapp text-3xl"></i>
+            ORDER VIA WHATSAPP
+          </button>
+        </div>
+
+        <div class="p-6 pt-8">
+          <h4 class="text-2xl font-bold mb-2">${name}</h4>
+          <p class="text-slate-300 leading-relaxed">${desc}</p>
+        </div>
+      `;
+      return card;
+    }
+
+    function orderViaWA(btn) {
+      const card = btn.closest('.product-card');
+      const accountName = card.querySelector('h4').textContent.trim();
+      
+      const message = generateWAMessage(accountName);
+      window.open(BASE_WA_URL + message, "_blank");
+    }
+
+    function renderPrimeAccounts() {
+      const grid = document.getElementById("prime-accounts-grid");
+      primeAccountsData.forEach(account => {
+        grid.appendChild(createAccountCard(account.tier, account.name, account.desc, account.icon));
+      });
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const icon = document.getElementById('hamburger-icon');
+      menu.classList.toggle('hidden');
+      if (menu.classList.contains('hidden')) {
+        icon.classList.replace('fa-xmark', 'fa-bars');
+      } else {
+        icon.classList.replace('fa-bars', 'fa-xmark');
+      }
+    }
+
+    // Render everything
+    renderPrimeAccounts();
+  </script>
+</body>
+    </html>
