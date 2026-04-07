@@ -2,386 +2,341 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>PrimeNexus | FF Accounts & Elite Panels</title>
-  <!-- Tailwind CSS + Font Awesome + Google Fonts -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrimeNexus • Elite Free Fire Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
+    
     * { font-family: 'Inter', sans-serif; }
-    body { background: linear-gradient(145deg, #f8fafc 0%, #eef2ff 100%); }
-    .page { display: none; opacity: 0; transition: opacity 0.2s ease; }
-    .page.active { display: block; opacity: 1; }
-    .nav-link { cursor: pointer; transition: all 0.2s; user-select: none; }
-    .product-card { transition: transform 0.2s, box-shadow 0.2s; }
-    .product-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.15); }
-    .img-placeholder {
-      background: linear-gradient(145deg, #e2e8f0, #cbd5e1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 160px;
+    .heading-font { font-family: 'Space Grotesk', sans-serif; }
+    
+    body {
+      background: linear-gradient(145deg, #0f172a 0%, #1e1133 100%);
+      color: #f8fafc;
     }
-    .whatsapp-btn { transition: all 0.2s; }
-    footer a { transition: color 0.2s; }
+    
+    .nav-link {
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .nav-link:hover {
+      transform: translateY(-2px);
+      color: #f97316 !important;
+    }
+    
+    .hero-bg {
+      background: linear-gradient(90deg, rgba(249, 115, 22, 0.9) 0%, rgba(168, 85, 247, 0.85) 100%);
+      box-shadow: 0 25px 50px -12px rgb(249 115 22);
+    }
+    
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 20px 25px -5px rgb(249 115 22 / 0.3), 0 8px 10px -6px rgb(168 85 247 / 0.3);
+    }
+    
+    .neon-text {
+      text-shadow: 0 0 20px #f97316, 0 0 40px #a855f7;
+    }
+    
+    .section-header {
+      background: linear-gradient(to right, #f97316, #a855f7, #22c55e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   </style>
 </head>
 <body class="antialiased">
 
-  <!-- Navigation Bar -->
-  <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-30 border-b border-gray-200">
+  <!-- Navigation -->
+  <nav class="bg-white/95 backdrop-blur-xl shadow-lg sticky top-0 z-50 border-b border-orange-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-3 md:py-4">
-        <div class="flex items-center gap-2">
-          <div class="bg-gradient-to-br from-orange-500 to-red-600 p-2 rounded-xl">
-            <i class="fas fa-crown text-white text-xl"></i>
+      <div class="flex justify-between items-center py-4">
+        
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="bg-gradient-to-br from-orange-500 via-purple-500 to-green-400 p-3 rounded-2xl shadow-inner">
+            <i class="fas fa-crown text-white text-3xl drop-shadow-md"></i>
           </div>
-          <span class="font-extrabold text-2xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-600">Prime<span class="text-orange-600">Nexus</span></span>
+          <div>
+            <span class="heading-font text-3xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-purple-600">Prime</span>
+            <span class="heading-font text-3xl font-bold tracking-tighter text-slate-800">Nexus</span>
+          </div>
         </div>
-        <div class="flex gap-4 md:gap-6 text-sm md:text-base font-semibold">
-          <div class="nav-link text-gray-700 hover:text-orange-600 px-2 py-1 rounded-full" data-page="home">🏠 Home</div>
-          <div class="nav-link text-gray-700 hover:text-orange-600 px-2 py-1 rounded-full" data-page="prime">🔥 Prime Accounts (2–8)</div>
-          <div class="nav-link text-gray-700 hover:text-orange-600 px-2 py-1 rounded-full" data-page="hacks">⚡ Hacks & Panels</div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-8 text-base font-semibold text-slate-700">
+          <a href="index.html" class="nav-link flex items-center gap-1 text-orange-600">
+            <i class="fas fa-home"></i> Home
+          </a>
+          <a href="accounts.html" class="nav-link flex items-center gap-1 hover:text-orange-600">
+            <i class="fas fa-fire"></i> Prime Accounts
+          </a>
+          <a href="hacks.html" class="nav-link flex items-center gap-1 hover:text-orange-600">
+            <i class="fas fa-bolt"></i> Hacks & Panels
+          </a>
         </div>
+
+        <!-- WhatsApp CTA -->
+        <a href="https://wa.me/2349124805162" target="_blank"
+           class="hidden md:flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-3xl font-semibold text-sm transition-colors">
+          <i class="fab fa-whatsapp text-xl"></i>
+          <span>Chat on WhatsApp</span>
+        </a>
+
+        <!-- Mobile Hamburger -->
+        <button onclick="toggleMobileMenu()" class="md:hidden text-3xl text-slate-700 hover:text-orange-600 transition-colors">
+          <i class="fas fa-bars" id="hamburger-icon"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-orange-100 px-4 py-6">
+      <div class="flex flex-col gap-6 text-lg font-medium">
+        <a href="index.html" class="flex items-center gap-3 text-orange-600">
+          <i class="fas fa-home"></i> Home
+        </a>
+        <a href="accounts.html" class="flex items-center gap-3 hover:text-orange-600">
+          <i class="fas fa-fire"></i> Prime Accounts
+        </a>
+        <a href="hacks.html" class="flex items-center gap-3 hover:text-orange-600">
+          <i class="fas fa-bolt"></i> Hacks & Panels
+        </a>
+        <a href="https://wa.me/2349124805162" target="_blank"
+           class="mt-4 flex items-center justify-center gap-3 bg-green-500 text-white py-4 rounded-3xl font-semibold">
+          <i class="fab fa-whatsapp text-2xl"></i> Chat Directly on WhatsApp
+        </a>
       </div>
     </div>
   </nav>
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <!-- ===================== HOME PAGE (About Business) ===================== -->
-    <div id="home-page" class="page active">
-      <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
-        <div class="bg-gradient-to-r from-orange-50 to-red-50 px-6 py-10 md:py-14 text-center">
-          <i class="fas fa-store text-6xl text-orange-500 mb-4"></i>
-          <h1 class="text-4xl md:text-5xl font-black text-gray-800">Elite Gaming Hub</h1>
-          <p class="text-gray-600 max-w-2xl mx-auto mt-3 text-lg">Trusted source for premium Free Fire accounts & high-end gaming tools.</p>
+  <!-- Hero Section -->
+  <header class="hero-bg pt-16 pb-20 md:pt-24 md:pb-28 text-center relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md text-white text-sm font-medium px-6 py-2 rounded-3xl mb-6">
+        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+        LIVE • 100% SAFE & INSTANT
+      </div>
+      
+      <h1 class="heading-font text-5xl md:text-7xl font-bold leading-none tracking-tighter neon-text mb-4">
+        Elite Free Fire<br>Prime Accounts &amp; Hacks
+      </h1>
+      
+      <p class="text-xl md:text-2xl text-white/90 max-w-lg mx-auto mb-10">
+        Tier 2–8 Prime • Exclusive Skins • Diamonds • Elite Passes • iOS &amp; Android Panels
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="accounts.html" 
+           class="bg-white text-slate-900 hover:bg-orange-100 px-8 py-4 rounded-3xl font-semibold text-lg flex items-center gap-3 transition-all">
+          <i class="fas fa-fire"></i>
+          Browse Prime Accounts
+        </a>
+        <a href="hacks.html" 
+           class="border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-3xl font-semibold text-lg flex items-center gap-3 transition-all">
+          <i class="fas fa-bolt"></i>
+          Get Hacks &amp; Panels
+        </a>
+        <a href="https://wa.me/2349124805162" target="_blank"
+           class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-3xl font-semibold text-lg flex items-center gap-3 transition-all">
+          <i class="fab fa-whatsapp"></i>
+          Instant WhatsApp
+        </a>
+      </div>
+
+      <!-- Trust signals -->
+      <div class="flex justify-center items-center gap-8 mt-16 text-sm text-white/80">
+        <div class="flex items-center gap-1"><i class="fas fa-shield-alt text-green-400"></i> 100% Secure</div>
+        <div class="flex items-center gap-1"><i class="fas fa-clock text-green-400"></i> Instant Delivery</div>
+        <div class="flex items-center gap-1"><i class="fas fa-users text-green-400"></i> 10k+ Happy Players</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mission & Why Us -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- Mission -->
+      <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 md:p-10">
+        <h2 class="text-3xl font-bold flex items-center gap-3 mb-6">
+          <i class="fas fa-bullseye text-orange-500"></i>
+          <span class="section-header">Our Mission</span>
+        </h2>
+        <p class="text-slate-200 leading-relaxed text-lg">
+          We deliver the highest quality Free Fire Prime accounts (Tier 2–8) loaded with exclusive skins, diamonds, elite passes, and more. 
+          Plus advanced, safe gaming panels for both iOS and Android — built for serious players who want an edge.
+        </p>
+        <div class="mt-8 flex items-center gap-4 bg-white/10 rounded-2xl p-5">
+          <i class="fas fa-shield-alt text-4xl text-green-400"></i>
+          <div>
+            <p class="font-semibold">24/7 WhatsApp Support • Lightning Delivery • 100% Demo &amp; Transparent</p>
+          </div>
         </div>
-        <div class="p-6 md:p-10">
-          <div class="grid md:grid-cols-2 gap-8">
+      </div>
+
+      <!-- Why Choose Us -->
+      <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 md:p-10">
+        <h2 class="text-3xl font-bold flex items-center gap-3 mb-6">
+          <i class="fas fa-handshake text-purple-400"></i>
+          <span class="section-header">Why PrimeNexus?</span>
+        </h2>
+        <div class="grid grid-cols-2 gap-6 text-slate-200">
+          <div class="flex gap-3">
+            <i class="fas fa-check-circle text-green-400 text-2xl mt-1"></i>
             <div>
-              <h2 class="text-2xl font-bold flex items-center gap-2"><i class="fas fa-bullseye text-orange-500"></i> Our Mission</h2>
-              <p class="text-gray-600 mt-2 leading-relaxed">We provide top-tier FF Prime accounts (Tier 2 to 8) with exclusive skins, diamonds, and elite passes. Also offering advanced gaming panels for both iOS & Android — built for performance and safety. 100% demo transactions with instant WhatsApp support.</p>
-              <div class="mt-6 bg-gray-50 p-4 rounded-2xl">
-                <i class="fas fa-shield-alt text-green-600 mr-2"></i>
-                <span class="font-medium">🔐 Business guarantee: 24/7 support, fast delivery, and secure simulation.</span>
-              </div>
+              <p class="font-semibold">Verified Tier 2–8 Prime</p>
+              <p class="text-sm">Loaded with rare skins &amp; diamonds</p>
             </div>
+          </div>
+          <div class="flex gap-3">
+            <i class="fas fa-check-circle text-green-400 text-2xl mt-1"></i>
             <div>
-              <h2 class="text-2xl font-bold flex items-center gap-2"><i class="fas fa-handshake text-orange-500"></i> Why choose us?</h2>
-              <ul class="mt-2 space-y-2 text-gray-600">
-                <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Verified Prime accounts (2–8 prime tiers)</li>
-                <li><i class="fas fa-check-circle text-green-500 mr-2"></i> iPhone & Android hack panels (educational use)</li>
-                <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Direct WhatsApp ordering — custom pre-filled messages</li>
-                <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Image placeholders for each product (customizable)</li>
-                <li><i class="fas fa-check-circle text-green-500 mr-2"></i> 100% demo & transparent business model</li>
-              </ul>
-              <div class="mt-6 bg-orange-50 p-4 rounded-2xl text-center">
-                <i class="fab fa-whatsapp text-green-500 text-2xl mr-2"></i>
-                <span class="font-bold">Contact us directly: +2349124805162</span>
-              </div>
+              <p class="font-semibold">iOS &amp; Android Panels</p>
+              <p class="text-sm">Educational &amp; high-performance tools</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <i class="fas fa-check-circle text-green-400 text-2xl mt-1"></i>
+            <div>
+              <p class="font-semibold">Instant WhatsApp Orders</p>
+              <p class="text-sm">Pre-filled messages • Fast replies</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <i class="fas fa-check-circle text-green-400 text-2xl mt-1"></i>
+            <div>
+              <p class="font-semibold">100% Safe &amp; Tested</p>
+              <p class="text-sm">No bans • Full refund policy</p>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- ===================== PRIME ACCOUNTS PAGE (Tier 2 to 8) ===================== -->
-    <div id="prime-page" class="page">
-      <div class="mb-6">
-        <h2 class="text-3xl font-black text-gray-800 flex items-center gap-2"><i class="fas fa-gem text-orange-500"></i> Prime Accounts <span class="text-sm bg-gray-200 px-3 py-1 rounded-full">Tier 2 → Tier 8</span></h2>
-        <p class="text-gray-500 mt-1">Elite Free Fire accounts with exclusive prime benefits. Click WhatsApp to order.</p>
+  <!-- Featured Products / Demo Cards -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white/5">
+    <h2 class="text-4xl font-bold text-center mb-12 section-header">Featured Right Now 🔥</h2>
+    
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+      <!-- Card 1 -->
+      <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden card-hover">
+        <div class="h-40 bg-gradient-to-br from-orange-400 to-purple-500 flex items-center justify-center">
+          <i class="fas fa-crown text-7xl text-white/90"></i>
+        </div>
+        <div class="p-5">
+          <p class="text-orange-400 font-semibold text-sm">TIER 8 PRIME</p>
+          <p class="text-xl font-bold">Legendary Bundle + 5000 Diamonds</p>
+          <p class="text-green-400 mt-1">₦18,500 • Instant</p>
+        </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="prime-accounts-grid"></div>
+      
+      <!-- Card 2 -->
+      <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden card-hover">
+        <div class="h-40 bg-gradient-to-br from-green-400 to-cyan-500 flex items-center justify-center">
+          <i class="fas fa-bolt text-7xl text-white/90"></i>
+        </div>
+        <div class="p-5">
+          <p class="text-purple-400 font-semibold text-sm">ANDROID PANEL</p>
+          <p class="text-xl font-bold">Pro Aimbot + ESP + No Recoil</p>
+          <p class="text-green-400 mt-1">₦12,000 • Safe</p>
+        </div>
+      </div>
+      
+      <!-- Repeat 4 more cards for demo (you can duplicate & change) -->
+      <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden card-hover">
+        <div class="h-40 bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center">
+          <i class="fas fa-fire text-7xl text-white/90"></i>
+        </div>
+        <div class="p-5">
+          <p class="text-orange-400 font-semibold text-sm">TIER 6 PRIME</p>
+          <p class="text-xl font-bold">Exclusive Skins + Elite Pass</p>
+          <p class="text-green-400 mt-1">₦9,800 • Ready</p>
+        </div>
+      </div>
+      
+      <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden card-hover">
+        <div class="h-40 bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center">
+          <i class="fas fa-mobile-alt text-7xl text-white/90"></i>
+        </div>
+        <div class="p-5">
+          <p class="text-green-400 font-semibold text-sm">iOS PANEL</p>
+          <p class="text-xl font-bold">Wallhack + Speed + Radar</p>
+          <p class="text-green-400 mt-1">₦15,000 • Undetected</p>
+        </div>
+      </div>
+      
+      <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden card-hover">
+        <div class="h-40 bg-gradient-to-br from-amber-400 to-red-500 flex items-center justify-center">
+          <i class="fas fa-gem text-7xl text-white/90"></i>
+        </div>
+        <div class="p-5">
+          <p class="text-purple-400 font-semibold text-sm">TIER 4 PRIME</p>
+          <p class="text-xl font-bold">Rare Bundle + 2500 Diamonds</p>
+          <p class="text-green-400 mt-1">₦7,200 • Fast</p>
+        </div>
+      </div>
+      
+      <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden card-hover">
+        <div class="h-40 bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center">
+          <i class="fas fa-shield-alt text-7xl text-white/90"></i>
+        </div>
+        <div class="p-5">
+          <p class="text-orange-400 font-semibold text-sm">ULTIMATE PANEL</p>
+          <p class="text-xl font-bold">Full Suite + Lifetime Updates</p>
+          <p class="text-green-400 mt-1">₦22,000 • Pro</p>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- ===================== HACKS & PANELS PAGE ===================== -->
-    <div id="hacks-page" class="page">
-      <div class="mb-6">
-        <h2 class="text-3xl font-black text-gray-800 flex items-center gap-2"><i class="fas fa-microchip text-purple-600"></i> Elite Panels & Hacks</h2>
-        <p class="text-gray-500">iPhone & Android solutions — 100% safe panels (educational demo). Select duration & WhatsApp your order.</p>
-      </div>
-
-      <!-- iPhone Panel Section -->
-      <div class="mb-12">
-        <div class="flex items-center gap-3 mb-4 border-l-4 border-blue-500 pl-3">
-          <i class="fab fa-apple text-2xl text-gray-700"></i>
-          <h3 class="text-2xl font-bold">📱 iPhone Panel — 100% Safe</h3>
-        </div>
-        <div class="bg-white/60 rounded-2xl p-5 shadow-sm">
-          <div class="grid md:grid-cols-2 gap-6" id="iphone-panel-grid"></div>
-        </div>
-      </div>
-
-      <!-- Android Headshot Panel (Standard) -->
-      <div class="mb-12">
-        <div class="flex items-center gap-3 mb-4 border-l-4 border-green-500 pl-3">
-          <i class="fab fa-android text-2xl text-green-700"></i>
-          <h3 class="text-2xl font-bold">🤖 ANDROID HEADSHOT PANEL (Standard)</h3>
-        </div>
-        <div class="bg-white/60 rounded-2xl p-5 shadow-sm">
-          <p class="text-sm text-gray-500 mb-3 flex items-center gap-1"><i class="fas fa-shield-alt text-green-600"></i> Aimbot / Headshot panel — 100% safe for main ID</p>
-          <div class="grid md:grid-cols-2 gap-6" id="android-standard-grid"></div>
-        </div>
-      </div>
-
-      <!-- Android BEST HEADSHOT PANEL -->
-      <div class="mb-12">
-        <div class="flex items-center gap-3 mb-4 border-l-4 border-amber-500 pl-3">
-          <i class="fab fa-android text-2xl text-amber-700"></i>
-          <h3 class="text-2xl font-bold">⚡ ANDROID BEST HEADSHOT PANEL (Ultra)</h3>
-        </div>
-        <div class="bg-white/60 rounded-2xl p-5 shadow-sm">
-          <div class="grid md:grid-cols-2 gap-6" id="android-best-grid"></div>
-        </div>
-      </div>
-
-      <div class="text-center text-xs text-gray-400 mt-8 border-t pt-6">
-        <i class="fas fa-info-circle"></i> All panels are simulated demo products — WhatsApp order with pre-filled message includes your selected duration & price.
-      </div>
+  <!-- Final CTA -->
+  <div class="bg-gradient-to-r from-orange-500 to-purple-600 py-16 text-center">
+    <div class="max-w-2xl mx-auto px-4">
+      <p class="text-3xl font-bold mb-4">Ready to dominate Free Fire?</p>
+      <p class="text-xl text-white/90 mb-8">Message us on WhatsApp now for instant access to any account or panel.</p>
+      <a href="https://wa.me/2349124805162" target="_blank"
+         class="inline-flex items-center gap-4 bg-white text-slate-900 px-10 py-5 rounded-3xl text-2xl font-semibold hover:scale-105 transition-transform">
+        <i class="fab fa-whatsapp text-4xl text-green-500"></i>
+        +234 912 480 5162
+      </a>
     </div>
-  </main>
+  </div>
 
-  <footer class="bg-gray-900 text-white mt-16 py-8">
+  <!-- Footer -->
+  <footer class="bg-slate-950 py-12 text-white/70">
     <div class="max-w-7xl mx-auto px-4 text-center">
-      <p class="text-gray-400 text-sm">© 2025 PrimeNexus — Demo marketplace for FF prime accounts & hacks. WhatsApp business: +2349124805162</p>
-      <p class="text-xs text-gray-500 mt-2">All transactions are simulated. For educational purposes only.</p>
+      <p class="text-sm">© 2026 PrimeNexus — Elite Gaming Hub</p>
+      <p class="text-xs mt-2">All transactions are simulated for demo purposes only. For educational and entertainment use.</p>
+      <div class="flex justify-center gap-6 mt-8 text-2xl">
+        <i class="fab fa-whatsapp cursor-pointer hover:text-green-400"></i>
+        <i class="fab fa-telegram cursor-pointer hover:text-blue-400"></i>
+      </div>
     </div>
   </footer>
 
   <script>
-    // ======================== WHATSAPP CONFIGURATION ========================
-    const WA_NUMBER = "2349124805162";   // without '+'
-    const BASE_WA_URL = `https://wa.me/${WA_NUMBER}?text=`;
-
-    // Helper: create pre-written message with product details (no price shown on card, but included in message)
-    function generateWAMessage(productName, durationOrTier, extraDetails = "") {
-      let msg = `I saw this in your website and I want to buy: ${productName}.`;
-      if (durationOrTier) msg += ` Package: ${durationOrTier}.`;
-      if (extraDetails) msg += ` ${extraDetails}`;
-      msg += ` Please provide payment details and confirm availability.`;
-      return encodeURIComponent(msg);
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const icon = document.getElementById('hamburger-icon');
+      menu.classList.toggle('hidden');
+      if (menu.classList.contains('hidden')) {
+        icon.classList.replace('fa-xmark', 'fa-bars');
+      } else {
+        icon.classList.replace('fa-bars', 'fa-xmark');
+      }
     }
-
-    // ======================== PRIME ACCOUNTS (Tier 2 to 8) ========================
-    const primeTiers = [
-      { tier: "Tier 2", name: "Prime Ignite", features: "5k diamonds + Elite Pass + Rare Backpack", icon: "fa-solid fa-star-of-life" },
-      { tier: "Tier 3", name: "Prime Apex", features: "12k diamonds + Elite Pass+ + Legendary Gloo Wall", icon: "fa-solid fa-chart-line" },
-      { tier: "Tier 4", name: "Prime Vanguard", features: "20k diamonds + All emotes + X-Suit (Basic)", icon: "fa-solid fa-shield-haltered" },
-      { tier: "Tier 5", name: "Prime Dominator", features: "35k diamonds + X-Suit Evolution + Gold Voucher", icon: "fa-solid fa-crown" },
-      { tier: "Tier 6", name: "Prime Overlord", features: "50k diamonds + Heroic rank + Exclusive Bundle", icon: "fa-solid fa-dragon" },
-      { tier: "Tier 7", name: "Prime Titan", features: "75k diamonds + All Max skins + Permanent Elite", icon: "fa-solid fa-robot" },
-      { tier: "Tier 8", name: "Prime Godlike", features: "150k diamonds + Full inventory + Custom ID tag", icon: "fa-solid fa-skull" }
-    ];
-
-    function renderPrimeAccounts() {
-      const container = document.getElementById("prime-accounts-grid");
-      if (!container) return;
-      container.innerHTML = "";
-      primeTiers.forEach(prime => {
-        const productName = `${prime.name} (${prime.tier})`;
-        const card = document.createElement("div");
-        card.className = "product-card bg-white rounded-2xl shadow-md overflow-hidden border border-gray-200 transition-all";
-        card.innerHTML = `
-          <div class="img-placeholder h-44 w-full flex flex-col items-center justify-center">
-            <i class="${prime.icon} text-5xl text-gray-600 mb-2"></i>
-            <span class="text-xs text-gray-500 font-mono bg-white/60 px-2 py-0.5 rounded-full">📸 image placeholder</span>
-          </div>
-          <div class="p-4">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="font-extrabold text-gray-800 text-xl">${prime.name}</h3>
-                <p class="text-xs text-orange-500 font-semibold">${prime.tier} Prime</p>
-              </div>
-              <div class="bg-orange-100 px-2 py-1 rounded-full text-xs font-bold text-orange-700">🔥 HOT</div>
-            </div>
-            <p class="text-gray-600 text-sm mt-2 flex items-start gap-1"><i class="fas fa-gem text-amber-500 text-xs mt-0.5"></i> ${prime.features}</p>
-            <div class="mt-4">
-              <a href="#" class="whatsapp-prime-btn bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition" data-product="${productName}" data-tier="${prime.tier}" data-features="${prime.features}">
-                <i class="fab fa-whatsapp"></i> Order on WhatsApp
-              </a>
-            </div>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-      attachPrimeEvents();
-    }
-
-    function attachPrimeEvents() {
-      document.querySelectorAll(".whatsapp-prime-btn").forEach(btn => {
-        btn.removeEventListener("click", handlePrimeClick);
-        btn.addEventListener("click", handlePrimeClick);
-      });
-    }
-
-    function handlePrimeClick(e) {
-      e.preventDefault();
-      const product = this.getAttribute("data-product");
-      const tier = this.getAttribute("data-tier");
-      const features = this.getAttribute("data-features");
-      const msg = generateWAMessage(product, `${tier} account`, `Features: ${features}`);
-      window.open(BASE_WA_URL + msg, "_blank");
-    }
-
-    // ======================== HACKS PANELS (iPhone + Android) ========================
-    // iPhone options: 1d,7d,30d, permanent (no price display on card, but WhatsApp includes price)
-    const iphoneOptions = [
-      { duration: "1 day", priceLabel: "11k", desc: "Full access + VIP support" },
-      { duration: "7 days", priceLabel: "30k", desc: "Weekly panel + priority" },
-      { duration: "30 days", priceLabel: "75k", desc: "Monthly elite access" },
-      { duration: "Permanent", priceLabel: "200k", desc: "Lifetime license + updates" }
-    ];
-
-    // Android Standard (Headshot): 1d 4k, 7d 11k, 15d 18k, 30d 30k, Permanent 100k
-    const androidStdOptions = [
-      { duration: "1 day", priceLabel: "4k", desc: "Headshot + Aimbot Basic" },
-      { duration: "7 days", priceLabel: "11k", desc: "Advanced prediction" },
-      { duration: "15 days", priceLabel: "18k", desc: "Pro features" },
-      { duration: "30 days", priceLabel: "30k", desc: "Ultra smooth aim" },
-      { duration: "Permanent", priceLabel: "100k", desc: "Lifetime + spoofer" }
-    ];
-
-    // Android Best Headshot: 3d 10k, 7d 18k, 15d 30k, Permanent 120k
-    const androidBestOptions = [
-      { duration: "3 days", priceLabel: "10k", desc: "Max headshot rate" },
-      { duration: "7 days", priceLabel: "18k", desc: "Rank ready + antiban" },
-      { duration: "15 days", priceLabel: "30k", desc: "Ultra pro panel" },
-      { duration: "Permanent", priceLabel: "120k", desc: "Premium lifetime + updates" }
-    ];
-
-    // Generic hack card builder: image placeholder + WhatsApp button (price hidden from UI, but included in message)
-    function createHackCard(panelName, duration, priceLabel, description, platformIcon) {
-      const cardDiv = document.createElement("div");
-      cardDiv.className = "product-card bg-white rounded-xl shadow border border-gray-100 overflow-hidden";
-      let iconHtml = "";
-      if (platformIcon === "iphone") iconHtml = `<i class="fab fa-apple text-4xl text-gray-500"></i>`;
-      else if (platformIcon === "android") iconHtml = `<i class="fab fa-android text-4xl text-green-600"></i>`;
-      else iconHtml = `<i class="fas fa-bolt text-4xl text-amber-500"></i>`;
-      
-      const productFullName = `${panelName} - ${duration} (${priceLabel})`;
-      cardDiv.innerHTML = `
-        <div class="img-placeholder h-40 w-full flex flex-col items-center justify-center">
-          ${iconHtml}
-          <span class="text-xs text-gray-500 font-mono mt-1 bg-white/70 px-2 rounded-full">🖼️ image slot</span>
-        </div>
-        <div class="p-4">
-          <div class="flex justify-between items-start">
-            <h4 class="font-bold text-gray-800 text-md">${panelName}</h4>
-            <span class="bg-purple-100 text-purple-800 text-[10px] font-bold px-2 py-0.5 rounded-full">${duration}</span>
-          </div>
-          <p class="text-xs text-gray-500 mt-1">${description}</p>
-          <div class="mt-3">
-            <a href="#" class="whatsapp-hack-btn bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition" data-panel="${panelName}" data-duration="${duration}" data-price="${priceLabel}" data-fullname="${productFullName}">
-              <i class="fab fa-whatsapp"></i> Order via WhatsApp
-            </a>
-          </div>
-        </div>
-      `;
-      return cardDiv;
-    }
-
-    function renderIPhonePanel() {
-      const container = document.getElementById("iphone-panel-grid");
-      if (!container) return;
-      container.innerHTML = "";
-      iphoneOptions.forEach(opt => {
-        const card = createHackCard("iPhone Panel (100% Safe)", opt.duration, opt.priceLabel, opt.desc, "iphone");
-        container.appendChild(card);
-      });
-    }
-
-    function renderAndroidStandard() {
-      const container = document.getElementById("android-standard-grid");
-      if (!container) return;
-      container.innerHTML = "";
-      androidStdOptions.forEach(opt => {
-        const card = createHackCard("ANDROID HEADSHOT PANEL (Standard)", opt.duration, opt.priceLabel, opt.desc, "android");
-        container.appendChild(card);
-      });
-    }
-
-    function renderAndroidBest() {
-      const container = document.getElementById("android-best-grid");
-      if (!container) return;
-      container.innerHTML = "";
-      androidBestOptions.forEach(opt => {
-        const card = createHackCard("ANDROID BEST HEADSHOT PANEL (Ultra)", opt.duration, opt.priceLabel, opt.desc, "best");
-        container.appendChild(card);
-      });
-    }
-
-    function attachHackEvents() {
-      document.querySelectorAll(".whatsapp-hack-btn").forEach(btn => {
-        btn.removeEventListener("click", handleHackClick);
-        btn.addEventListener("click", handleHackClick);
-      });
-    }
-
-    function handleHackClick(e) {
-      e.preventDefault();
-      const panel = this.getAttribute("data-panel");
-      const duration = this.getAttribute("data-duration");
-      const price = this.getAttribute("data-price");
-      const full = `${panel} | ${duration} | Price: ${price}`;
-      const msg = generateWAMessage(full, duration, `Total price: ${price}. Safe panel.`);
-      window.open(BASE_WA_URL + msg, "_blank");
-    }
-
-    function renderAllHacks() {
-      renderIPhonePanel();
-      renderAndroidStandard();
-      renderAndroidBest();
-      setTimeout(() => attachHackEvents(), 30);
-    }
-
-    // ======================== PAGE NAVIGATION ========================
-    function switchPage(pageId) {
-      document.querySelectorAll('.page').forEach(page => {
-        page.classList.remove('active');
-      });
-      document.getElementById(`${pageId}-page`).classList.add('active');
-      // update nav active style
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('text-orange-600', 'font-extrabold');
-        link.classList.add('text-gray-700');
-        if (link.getAttribute('data-page') === pageId) {
-          link.classList.remove('text-gray-700');
-          link.classList.add('text-orange-600', 'font-extrabold');
-        }
-      });
-    }
-
-    // Attach navigation listeners
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        const page = link.getAttribute('data-page');
-        if (page) switchPage(page);
-      });
-    });
-
-    // Observer to reattach events after dynamic content (just in case)
-    function observeDynamicContent() {
-      const observer = new MutationObserver(() => {
-        attachPrimeEvents();
-        attachHackEvents();
-      });
-      const primeContainer = document.getElementById("prime-accounts-grid");
-      const iphoneContainer = document.getElementById("iphone-panel-grid");
-      const androidStd = document.getElementById("android-standard-grid");
-      const androidBest = document.getElementById("android-best-grid");
-      if (primeContainer) observer.observe(primeContainer, { childList: true, subtree: true });
-      if (iphoneContainer) observer.observe(iphoneContainer, { childList: true, subtree: true });
-      if (androidStd) observer.observe(androidStd, { childList: true, subtree: true });
-      if (androidBest) observer.observe(androidBest, { childList: true, subtree: true });
-    }
-
-    // Initial render
-    renderPrimeAccounts();
-    renderAllHacks();
-    observeDynamicContent();
-    // set active nav indicator for home
-    document.querySelector('.nav-link[data-page="home"]').classList.add('text-orange-600', 'font-extrabold');
+    
+    // Tailwind script already loaded
+    console.log('%c✅ PrimeNexus improved and fully responsive!', 'color:#f97316; font-size:14px; font-weight:bold');
   </script>
 </body>
-</html>
+  </html>
