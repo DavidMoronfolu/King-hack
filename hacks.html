@@ -9,94 +9,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
-    
     * { font-family: 'Inter', sans-serif; }
     .heading-font { font-family: 'Space Grotesk', sans-serif; }
-    
-    body {
-      background: linear-gradient(145deg, #0f172a 0%, #1e1133 100%);
-      color: #f8fafc;
-    }
-    
-    .nav-link {
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .nav-link:hover {
-      transform: translateY(-2px);
-      color: #f97316 !important;
-    }
-    
-    .nav-active {
-      color: #f97316;
-      position: relative;
-    }
-    
-    .nav-active::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(to right, #f97316, #a855f7);
-      border-radius: 9999px;
-    }
-    
-    .card-hover {
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .card-hover:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 20px 25px -5px rgb(249 115 22 / 0.3), 0 8px 10px -6px rgb(168 85 247 / 0.3);
-    }
-    
-    .neon-text {
-      text-shadow: 0 0 20px #f97316, 0 0 40px #a855f7;
-    }
-    
-    .section-header {
-      background: linear-gradient(to right, #f97316, #a855f7, #22c55e);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .product-card {
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-    
-    .img-placeholder {
-      background: linear-gradient(145deg, #1e2937, #334155);
-      min-height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-    
-    .img-placeholder:hover {
-      filter: brightness(1.15);
-    }
-    
-    .whatsapp-btn {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+    body { background: linear-gradient(145deg, #0f172a 0%, #1e1133 100%); color: #f8fafc; }
+    .nav-link { cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .nav-link:hover { transform: translateY(-2px); color: #f97316 !important; }
+    .nav-active { color: #f97316; position: relative; }
+    .nav-active::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 3px; background: linear-gradient(to right, #f97316, #a855f7); border-radius: 9999px; }
+    .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .card-hover:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 20px 25px -5px rgb(249 115 22 / 0.3), 0 8px 10px -6px rgb(168 85 247 / 0.3); }
+    .product-card { background: rgba(255,255,255,0.08); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.15); }
+    .img-placeholder { min-height: 220px; overflow: hidden; position: relative; }
+    .img-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+    .whatsapp-btn { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
   </style>
 </head>
 <body class="antialiased">
 
-  <!-- IMPROVED Navigation Bar (consistent with index.html) -->
+  <!-- Navigation -->
   <nav class="bg-white/95 backdrop-blur-xl shadow-xl sticky top-0 z-50 border-b border-orange-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center py-4">
-        
-        <!-- Clickable Logo → Home -->
         <a href="index.html" class="flex items-center gap-3 hover:scale-105 transition-transform">
           <div class="bg-gradient-to-br from-orange-500 via-purple-500 to-green-400 p-3 rounded-2xl shadow-inner">
             <i class="fas fa-crown text-white text-3xl drop-shadow-md"></i>
@@ -107,83 +40,46 @@
           </div>
         </a>
 
-        <!-- Desktop Menu -->
         <div class="hidden md:flex items-center gap-8 text-base font-semibold text-slate-700">
-          <a href="index.html" class="nav-link flex items-center gap-1">
-            <i class="fas fa-home"></i> Home
-          </a>
-          <a href="accounts.html" class="nav-link flex items-center gap-1">
-            <i class="fas fa-fire"></i> Prime Accounts
-          </a>
-          <a href="hacks.html" class="nav-link nav-active flex items-center gap-1">
-            <i class="fas fa-bolt"></i> Hacks & Panels
-          </a>
+          <a href="index.html" class="nav-link flex items-center gap-1"><i class="fas fa-home"></i> Home</a>
+          <a href="accounts.html" class="nav-link flex items-center gap-1"><i class="fas fa-fire"></i> Prime Accounts</a>
+          <a href="hacks.html" class="nav-link nav-active flex items-center gap-1"><i class="fas fa-bolt"></i> Hacks & Panels</a>
         </div>
 
-        <!-- WhatsApp CTA -->
-        <a href="https://wa.me/2349169939848" target="_blank"
-           class="hidden md:flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-3xl font-semibold text-sm transition-colors">
+        <a href="https://wa.me/2349169939848" target="_blank" class="hidden md:flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-3xl font-semibold text-sm transition-colors">
           <i class="fab fa-whatsapp text-xl"></i>
           <span>Buy Now</span>
         </a>
 
-        <!-- Mobile Hamburger -->
         <button onclick="toggleMobileMenu()" class="md:hidden text-3xl text-slate-700 hover:text-orange-600 transition-colors">
           <i class="fas fa-bars" id="hamburger-icon"></i>
         </button>
       </div>
     </div>
 
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-orange-100 px-4 py-6">
       <div class="flex flex-col gap-6 text-lg font-medium">
-        <a href="index.html" class="flex items-center gap-3">
-          <i class="fas fa-home"></i> Home
-        </a>
-        <a href="accounts.html" class="flex items-center gap-3">
-          <i class="fas fa-fire"></i> Prime Accounts
-        </a>
-        <a href="hacks.html" class="flex items-center gap-3 text-orange-600">
-          <i class="fas fa-bolt"></i> Hacks & Panels
-        </a>
-        <a href="https://wa.me/2349169939848" target="_blank"
-           class="mt-4 flex items-center justify-center gap-3 bg-green-500 text-white py-4 rounded-3xl font-semibold">
+        <a href="index.html" class="flex items-center gap-3"><i class="fas fa-home"></i> Home</a>
+        <a href="accounts.html" class="flex items-center gap-3"><i class="fas fa-fire"></i> Prime Accounts</a>
+        <a href="hacks.html" class="flex items-center gap-3 text-orange-600"><i class="fas fa-bolt"></i> Hacks & Panels</a>
+        <a href="https://wa.me/2349169939848" target="_blank" class="mt-4 flex items-center justify-center gap-3 bg-green-500 text-white py-4 rounded-3xl font-semibold">
           <i class="fab fa-whatsapp text-2xl"></i> Buy Now
         </a>
       </div>
     </div>
   </nav>
 
-  <!-- Hero for Hacks Page -->
-  <header class="hero-bg pt-16 pb-20 md:pt-24 md:pb-28 text-center relative overflow-hidden" style="background: linear-gradient(90deg, rgba(249, 115, 22, 0.9) 0%, rgba(168, 85, 247, 0.85) 100%); box-shadow: 0 25px 50px -12px rgb(249 115 22);">
+  <!-- Hero -->
+  <header class="pt-16 pb-20 md:pt-24 md:pb-28 text-center" style="background: linear-gradient(90deg, rgba(249, 115, 22, 0.9) 0%, rgba(168, 85, 247, 0.85) 100%);">
     <div class="max-w-4xl mx-auto px-4">
-      <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md text-white text-sm font-medium px-6 py-2 rounded-3xl mb-6">
-        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-        100% SAFE • INSTANT ACTIVATION
-      </div>
-      
-      <h1 class="heading-font text-5xl md:text-7xl font-bold leading-none tracking-tighter neon-text mb-4">
-        ELITE HACKS &amp;<br>PANELS
-      </h1>
-      
-      <p class="text-xl md:text-2xl text-white/90 max-w-lg mx-auto">
-        Pro Free Fire Panels • NEW: CODM iOS Hacks (iPhone Only)
-      </p>
-
-      <div class="flex justify-center mt-10">
-        <a href="https://wa.me/2349169939848" target="_blank"
-           class="bg-white text-slate-900 hover:bg-orange-100 px-10 py-5 rounded-3xl font-semibold text-xl flex items-center gap-4">
-          <i class="fab fa-whatsapp text-4xl text-green-500"></i>
-          Buy Now
-        </a>
-      </div>
+      <h1 class="heading-font text-5xl md:text-7xl font-bold leading-none tracking-tighter neon-text mb-4">ELITE HACKS &amp; PANELS</h1>
+      <p class="text-xl md:text-2xl text-white/90">Pro Free Fire Panels • CODM iOS Hacks</p>
     </div>
   </header>
 
-  <!-- Main Panels Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
-  <!-- iPhone Panel -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- iPhone Panel -->
     <div class="mb-16">
       <div class="flex items-center gap-4 mb-8">
         <i class="fab fa-apple text-5xl text-blue-400"></i>
@@ -210,40 +106,31 @@
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="android-best-grid"></div>
     </div>
 
-    <!-- NEW: CODM iOS Hack Section -->
+    <!-- CODM iOS (keeps clean style) -->
     <div class="mb-16">
       <div class="flex items-center gap-4 mb-8">
         <i class="fab fa-apple text-5xl text-indigo-400"></i>
         <h2 class="text-4xl font-bold heading-font section-header">🍎 CODM iOS HACK — iPhone Only</h2>
       </div>
-      <p class="text-slate-400 mb-6">Exclusive Call of Duty Mobile hacks for iOS only. 100% safe, no ban risk.</p>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="codm-ios-grid"></div>
     </div>
 
-  </div>
+  </main>
 
-  <!-- Final CTA -->
+  <!-- Final CTA & Footer (same as before) -->
   <div class="bg-gradient-to-r from-orange-500 to-purple-600 py-16 text-center">
     <div class="max-w-2xl mx-auto px-4">
       <p class="text-3xl font-bold mb-4">Ready to turn on god mode?</p>
-      <p class="text-xl text-white/90 mb-8">Pick any panel or CODM iOS hack above and message us instantly.</p>
-      <a href="https://wa.me/2349169939848" target="_blank"
-         class="inline-flex items-center gap-4 bg-white text-slate-900 px-10 py-5 rounded-3xl text-2xl font-semibold hover:scale-105 transition-transform">
-        <i class="fab fa-whatsapp text-4xl text-green-500"></i>
-        Buy Now
+      <a href="https://wa.me/2349169939848" target="_blank" class="inline-flex items-center gap-4 bg-white text-slate-900 px-10 py-5 rounded-3xl text-2xl font-semibold hover:scale-105 transition-transform">
+        <i class="fab fa-whatsapp text-4xl text-green-500"></i> Buy Now
       </a>
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="bg-slate-950 py-12 text-white/70">
     <div class="max-w-7xl mx-auto px-4 text-center">
       <p class="text-sm">© 2026 Hack King — Elite Gaming Hub</p>
-      <p class="text-xs mt-2">All transactions are simulated for demo purposes only. For educational and entertainment use.</p>
-      <div class="flex justify-center gap-6 mt-8 text-2xl">
-        <i class="fab fa-whatsapp cursor-pointer hover:text-green-400"></i>
-        <i class="fab fa-telegram cursor-pointer hover:text-blue-400"></i>
-      </div>
+      <p class="text-xs mt-2">All transactions are simulated for demo purposes only.</p>
     </div>
   </footer>
 
@@ -256,36 +143,19 @@
       return encodeURIComponent(msg);
     }
 
-    // Existing options
-    const iphoneOptions = [
-      { duration: "1 DAY", desc: "Full access + VIP support" },
-      { duration: "7 DAYS", desc: "Weekly panel + priority" },
-      { duration: "30 DAYS", desc: "Monthly elite access" },
-      { duration: "PERMANENT", desc: "Lifetime license + updates" }
+    const ffHackImages = [
+      "free fire hack 1.jpg", "free fire hack 2.jpg", "free fire hack 3.jpg",
+      "free fire hack 4.jpg", "free fire hack 5.jpg", "free fire hack 6.jpg",
+      "free fire hack 7.jpg", "free fire hack 8.jpg", "free fire hack 9.jpg"
     ];
 
-    const androidStdOptions = [
-      { duration: "1 DAY", desc: "Headshot + Aimbot Basic" },
-      { duration: "7 DAYS", desc: "Advanced prediction" },
-      { duration: "15 DAYS", desc: "Pro features" },
-      { duration: "30 DAYS", desc: "Ultra smooth aim" },
-      { duration: "PERMANENT", desc: "Lifetime + spoofer" }
-    ];
+    let imageIndex = 0;
 
-    const androidBestOptions = [
-      { duration: "3 DAYS", desc: "Max headshot rate" },
-      { duration: "7 DAYS", desc: "Rank ready + antiban" },
-      { duration: "15 DAYS", desc: "Ultra pro panel" },
-      { duration: "PERMANENT", desc: "Premium lifetime + updates" }
-    ];
-
-    // NEW CODM iOS Options
-    const codmIosOptions = [
-      { duration: "1 DAY", desc: "Aimbot + Wallhack Basic" },
-      { duration: "7 DAYS", desc: "Advanced ESP + No Recoil" },
-      { duration: "15 DAYS", desc: "Full suite + Radar" },
-      { duration: "PERMANENT", desc: "Lifetime iOS CODM Hack + Updates" }
-    ];
+    function getNextFFImage() {
+      const src = ffHackImages[imageIndex % ffHackImages.length];
+      imageIndex++;
+      return src;
+    }
 
     function createHackCard(panelName, duration, description, iconClass, color) {
       const card = document.createElement("div");
@@ -293,16 +163,13 @@
 
       card.innerHTML = `
         <div class="img-placeholder">
-          <i class="${iconClass} text-7xl" style="color: ${color};"></i>
-          <span class="absolute top-4 right-4 bg-black/60 text-white text-xs font-bold px-3 py-1 rounded-3xl backdrop-blur-md">${duration}</span>
+          <img src="${getNextFFImage()}" alt="Free Fire Hack">
+          <span class="absolute top-4 right-4 bg-black/70 text-white text-xs font-bold px-3 py-1 rounded-3xl backdrop-blur-md">${duration}</span>
         </div>
 
-        <!-- WhatsApp button UNDER the picture -->
         <div class="px-6 -mt-6 relative z-10">
-          <button onclick="orderViaWA(this)" 
-                  class="whatsapp-btn w-full bg-[#25D366] hover:bg-[#22c35a] text-white font-bold py-4 px-6 rounded-3xl flex items-center justify-center gap-3 shadow-2xl text-lg">
-            <i class="fab fa-whatsapp text-3xl"></i>
-            Buy Now
+          <button onclick="orderViaWA(this)" class="whatsapp-btn w-full bg-[#25D366] hover:bg-[#22c35a] text-white font-bold py-4 px-6 rounded-3xl flex items-center justify-center gap-3 shadow-2xl text-lg">
+            <i class="fab fa-whatsapp text-3xl"></i> Buy Now
           </button>
         </div>
 
@@ -317,9 +184,7 @@
     function orderViaWA(btn) {
       const card = btn.closest('.product-card');
       const panelName = card.querySelector('h4').textContent.trim();
-      const durationEl = card.querySelector('span.bg-black\\/60');
-      const duration = durationEl ? durationEl.textContent.trim() : "";
-      
+      const duration = card.querySelector('span').textContent.trim();
       const message = generateWAMessage(panelName, duration);
       window.open(BASE_WA_URL + message, "_blank");
     }
@@ -327,26 +192,43 @@
     function renderPanels() {
       // iPhone
       const iphoneGrid = document.getElementById("iphone-panel-grid");
-      iphoneOptions.forEach(opt => {
+      [{duration:"1 DAY",desc:"Full access + VIP support"},{duration:"7 DAYS",desc:"Weekly panel + priority"},{duration:"30 DAYS",desc:"Monthly elite access"},{duration:"PERMANENT",desc:"Lifetime license + updates"}].forEach(opt => {
         iphoneGrid.appendChild(createHackCard("iPhone Panel (100% Safe)", opt.duration, opt.desc, "fab fa-apple", "#60a5fa"));
       });
 
       // Android Standard
       const stdGrid = document.getElementById("android-standard-grid");
-      androidStdOptions.forEach(opt => {
+      [{duration:"1 DAY",desc:"Headshot + Aimbot Basic"},{duration:"7 DAYS",desc:"Advanced prediction"},{duration:"15 DAYS",desc:"Pro features"},{duration:"30 DAYS",desc:"Ultra smooth aim"},{duration:"PERMANENT",desc:"Lifetime + spoofer"}].forEach(opt => {
         stdGrid.appendChild(createHackCard("Android Headshot Panel", opt.duration, opt.desc, "fab fa-android", "#4ade80"));
       });
 
-      // Android Best
+      // Android Ultra
       const bestGrid = document.getElementById("android-best-grid");
-      androidBestOptions.forEach(opt => {
+      [{duration:"3 DAYS",desc:"Max headshot rate"},{duration:"7 DAYS",desc:"Rank ready + antiban"},{duration:"15 DAYS",desc:"Ultra pro panel"},{duration:"PERMANENT",desc:"Premium lifetime + updates"}].forEach(opt => {
         bestGrid.appendChild(createHackCard("Android Best Headshot Panel (Ultra)", opt.duration, opt.desc, "fas fa-bolt", "#fcd34d"));
       });
 
-      // NEW CODM iOS
+      // CODM stays with icon (as requested - only Free Fire uses your pictures)
       const codmGrid = document.getElementById("codm-ios-grid");
-      codmIosOptions.forEach(opt => {
-        codmGrid.appendChild(createHackCard("CODM iOS Hack (iPhone Only)", opt.duration, opt.desc, "fab fa-apple", "#6366f1"));
+      [{duration:"1 DAY",desc:"Aimbot + Wallhack Basic"},{duration:"7 DAYS",desc:"Advanced ESP + No Recoil"},{duration:"15 DAYS",desc:"Full suite + Radar"},{duration:"PERMANENT",desc:"Lifetime iOS CODM Hack + Updates"}].forEach(opt => {
+        const card = document.createElement("div");
+        card.className = `product-card rounded-3xl overflow-hidden card-hover`;
+        card.innerHTML = `
+          <div class="img-placeholder bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center">
+            <i class="fab fa-apple text-8xl text-white/90"></i>
+            <span class="absolute top-4 right-4 bg-black/70 text-white text-xs font-bold px-3 py-1 rounded-3xl">${opt.duration}</span>
+          </div>
+          <div class="px-6 -mt-6 relative z-10">
+            <button onclick="orderViaWA(this)" class="whatsapp-btn w-full bg-[#25D366] hover:bg-[#22c35a] text-white font-bold py-4 px-6 rounded-3xl flex items-center justify-center gap-3 shadow-2xl text-lg">
+              <i class="fab fa-whatsapp text-3xl"></i> Buy Now
+            </button>
+          </div>
+          <div class="p-6 pt-8">
+            <h4 class="text-xl font-bold mb-2">CODM iOS Hack (iPhone Only)</h4>
+            <p class="text-slate-300">${opt.desc}</p>
+          </div>
+        `;
+        codmGrid.appendChild(card);
       });
     }
 
@@ -354,90 +236,10 @@
       const menu = document.getElementById('mobile-menu');
       const icon = document.getElementById('hamburger-icon');
       menu.classList.toggle('hidden');
-      if (menu.classList.contains('hidden')) {
-        icon.classList.replace('fa-xmark', 'fa-bars');
-      } else {
-        icon.classList.replace('fa-bars', 'fa-xmark');
-      }
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-xmark');
     }
 
-    // Render everything
-    renderPanels();
-  </script>
-</body>
-  </html>ion: "7 DAYS", desc: "Rank ready + antiban" },
-      { duration: "15 DAYS", desc: "Ultra pro panel" },
-      { duration: "PERMANENT", desc: "Premium lifetime + updates" }
-    ];
-
-    function createHackCard(panelName, duration, description, iconClass, color) {
-      const card = document.createElement("div");
-      card.className = `product-card rounded-3xl overflow-hidden card-hover`;
-
-      card.innerHTML = `
-        <div class="img-placeholder">
-          <i class="${iconClass} text-7xl" style="color: ${color};"></i>
-          <span class="absolute top-4 right-4 bg-black/60 text-white text-xs font-bold px-3 py-1 rounded-3xl backdrop-blur-md">${duration}</span>
-        </div>
-
-        <!-- WhatsApp button UNDER the picture -->
-        <div class="px-6 -mt-6 relative z-10">
-          <button onclick="orderViaWA(this)" 
-                  class="whatsapp-btn w-full bg-[#25D366] hover:bg-[#22c35a] text-white font-bold py-4 px-6 rounded-3xl flex items-center justify-center gap-3 shadow-2xl text-lg">
-            <i class="fab fa-whatsapp text-3xl"></i>
-            ORDER VIA WHATSAPP
-          </button>
-        </div>
-
-        <div class="p-6 pt-8">
-          <h4 class="text-xl font-bold mb-2">${panelName}</h4>
-          <p class="text-slate-300">${description}</p>
-        </div>
-      `;
-      return card;
-    }
-
-    function orderViaWA(btn) {
-      const card = btn.closest('.product-card');
-      const panelName = card.querySelector('h4').textContent.trim();
-      const duration = card.querySelector('span.bg-black\\/60').textContent.trim();
-      
-      const message = generateWAMessage(panelName, duration);
-      window.open(BASE_WA_URL + message, "_blank");
-    }
-
-    function renderPanels() {
-      // iPhone
-      const iphoneGrid = document.getElementById("iphone-panel-grid");
-      iphoneOptions.forEach(opt => {
-        iphoneGrid.appendChild(createHackCard("iPhone Panel (100% Safe)", opt.duration, opt.desc, "fab fa-apple", "#60a5fa"));
-      });
-
-      // Android Standard
-      const stdGrid = document.getElementById("android-standard-grid");
-      androidStdOptions.forEach(opt => {
-        stdGrid.appendChild(createHackCard("Android Headshot Panel", opt.duration, opt.desc, "fab fa-android", "#4ade80"));
-      });
-
-      // Android Best
-      const bestGrid = document.getElementById("android-best-grid");
-      androidBestOptions.forEach(opt => {
-        bestGrid.appendChild(createHackCard("Android Best Headshot Panel (Ultra)", opt.duration, opt.desc, "fas fa-bolt", "#fcd34d"));
-      });
-    }
-
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobile-menu');
-      const icon = document.getElementById('hamburger-icon');
-      menu.classList.toggle('hidden');
-      if (menu.classList.contains('hidden')) {
-        icon.classList.replace('fa-xmark', 'fa-bars');
-      } else {
-        icon.classList.replace('fa-bars', 'fa-xmark');
-      }
-    }
-
-    // Render everything
     renderPanels();
   </script>
 </body>
