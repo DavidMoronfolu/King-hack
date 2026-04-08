@@ -28,6 +28,22 @@
       color: #f97316 !important;
     }
     
+    .nav-active {
+      color: #f97316;
+      position: relative;
+    }
+    
+    .nav-active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, #f97316, #a855f7);
+      border-radius: 9999px;
+    }
+    
     .card-hover {
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -61,6 +77,11 @@
       justify-content: center;
       position: relative;
       overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .img-placeholder:hover {
+      filter: brightness(1.15);
     }
     
     .whatsapp-btn {
@@ -70,13 +91,13 @@
 </head>
 <body class="antialiased">
 
-  <!-- Navigation (EXACT same as your index.html & hacks.html) -->
-  <nav class="bg-white/95 backdrop-blur-xl shadow-lg sticky top-0 z-50 border-b border-orange-200">
+  <!-- IMPROVED Navigation Bar -->
+  <nav class="bg-white/95 backdrop-blur-xl shadow-xl sticky top-0 z-50 border-b border-orange-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center py-4">
         
-        <!-- Logo -->
-        <div class="flex items-center gap-3">
+        <!-- Clickable Logo → Home -->
+        <a href="index.html" class="flex items-center gap-3 hover:scale-105 transition-transform">
           <div class="bg-gradient-to-br from-orange-500 via-purple-500 to-green-400 p-3 rounded-2xl shadow-inner">
             <i class="fas fa-crown text-white text-3xl drop-shadow-md"></i>
           </div>
@@ -84,14 +105,14 @@
             <span class="heading-font text-3xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-purple-600">Hack</span>
             <span class="heading-font text-3xl font-bold tracking-tighter text-slate-800">King</span>
           </div>
-        </div>
+        </a>
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex items-center gap-8 text-base font-semibold text-slate-700">
           <a href="index.html" class="nav-link flex items-center gap-1">
             <i class="fas fa-home"></i> Home
           </a>
-          <a href="accounts.html" class="nav-link flex items-center gap-1 text-orange-600">
+          <a href="accounts.html" class="nav-link nav-active flex items-center gap-1">
             <i class="fas fa-fire"></i> Prime Accounts
           </a>
           <a href="hacks.html" class="nav-link flex items-center gap-1">
@@ -100,10 +121,10 @@
         </div>
 
         <!-- WhatsApp CTA -->
-        <a href="https://wa.me/2349124805162" target="_blank"
+        <a href="https://wa.me/2349169939848" target="_blank"
            class="hidden md:flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-3xl font-semibold text-sm transition-colors">
           <i class="fab fa-whatsapp text-xl"></i>
-          <span>Chat on WhatsApp</span>
+          <span>Buy Now</span>
         </a>
 
         <!-- Mobile Hamburger -->
@@ -125,9 +146,9 @@
         <a href="hacks.html" class="flex items-center gap-3">
           <i class="fas fa-bolt"></i> Hacks & Panels
         </a>
-        <a href="https://wa.me/2349124805162" target="_blank"
+        <a href="https://wa.me/2349169939848" target="_blank"
            class="mt-4 flex items-center justify-center gap-3 bg-green-500 text-white py-4 rounded-3xl font-semibold">
-          <i class="fab fa-whatsapp text-2xl"></i> Chat Directly on WhatsApp
+          <i class="fab fa-whatsapp text-2xl"></i> Buy Now
         </a>
       </div>
     </div>
@@ -146,23 +167,45 @@
       </h1>
       
       <p class="text-xl md:text-2xl text-white/90 max-w-lg mx-auto">
-        Fully loaded Free Fire accounts • Rare skins • Diamonds • Elite Passes • Legendary Bundles
+        Fully loaded Free Fire &amp; CODM accounts • Rare skins • Elite Passes • Legendary Bundles
       </p>
 
       <div class="flex justify-center mt-10">
-        <a href="https://wa.me/2349124805162" target="_blank"
+        <a href="https://wa.me/2349169939848" target="_blank"
            class="bg-white text-slate-900 hover:bg-orange-100 px-10 py-5 rounded-3xl font-semibold text-xl flex items-center gap-4">
           <i class="fab fa-whatsapp text-4xl text-green-500"></i>
-          GET YOUR PRIME ACCOUNT NOW
+          Buy Now
         </a>
       </div>
     </div>
   </header>
 
+  <!-- Bonus Banner -->
+  <div class="max-w-7xl mx-auto px-4 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white text-center font-bold flex items-center justify-center gap-3">
+    <i class="fas fa-gift text-2xl"></i>
+    BONUS: GET 10% OFF ON YOUR FIRST PURCHASE
+  </div>
+
   <!-- Main Accounts Content -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="prime-accounts-grid"></div>
+
+    <!-- Free Fire Prime Accounts -->
+    <div class="mb-20">
+      <div class="flex items-center gap-4 mb-8">
+        <i class="fas fa-fire text-5xl text-orange-400"></i>
+        <h2 class="text-4xl font-bold heading-font section-header">🔥 FREE FIRE PRIME ACCOUNTS (Tier 1–8)</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="freefire-grid"></div>
+    </div>
+
+    <!-- NEW: CODM Accounts -->
+    <div>
+      <div class="flex items-center gap-4 mb-8">
+        <i class="fas fa-gamepad text-5xl text-indigo-400"></i>
+        <h2 class="text-4xl font-bold heading-font section-header">🎮 CODM ACCOUNTS (Call of Duty Mobile)</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="codm-grid"></div>
+    </div>
 
   </main>
 
@@ -170,16 +213,16 @@
   <div class="bg-gradient-to-r from-orange-500 to-purple-600 py-16 text-center">
     <div class="max-w-2xl mx-auto px-4">
       <p class="text-3xl font-bold mb-4">Ready for your own god-tier account?</p>
-      <p class="text-xl text-white/90 mb-8">Choose any Tier 1–8 Prime account above and message us instantly on WhatsApp. Login details delivered in minutes.</p>
-      <a href="https://wa.me/2349124805162" target="_blank"
+      <p class="text-xl text-white/90 mb-8">Choose any Free Fire or CODM account above + enjoy 10% off your first purchase.</p>
+      <a href="https://wa.me/2349169939848" target="_blank"
          class="inline-flex items-center gap-4 bg-white text-slate-900 px-10 py-5 rounded-3xl text-2xl font-semibold hover:scale-105 transition-transform">
         <i class="fab fa-whatsapp text-4xl text-green-500"></i>
-        +234 912 480 5162
+        Buy Now
       </a>
     </div>
   </div>
 
-  <!-- Footer (EXACT same as your index.html & hacks.html) -->
+  <!-- Footer -->
   <footer class="bg-slate-950 py-12 text-white/70">
     <div class="max-w-7xl mx-auto px-4 text-center">
       <p class="text-sm">© 2026 Hack King — Elite Gaming Hub</p>
@@ -192,61 +235,114 @@
   </footer>
 
   <script>
-    const WA_NUMBER = "2349124805162";
+    const WA_NUMBER = "2349169939848";
     const BASE_WA_URL = `https://wa.me/${WA_NUMBER}?text=`;
 
     function generateWAMessage(accountName) {
-      const msg = `I want to buy from Hack King: ${accountName}. Clean Prime account, ready for instant login. Please send payment details and account credentials.`;
+      const msg = `I want to buy from Hack King: ${accountName}. Clean account + I want the 10% first purchase bonus. Ready for instant login. Please send payment details and account credentials.`;
       return encodeURIComponent(msg);
     }
 
-    const primeAccountsData = [
+    // FREE FIRE PRIME ACCOUNTS (no diamonds)
+    const freeFireAccounts = [
       {
         tier: "TIER 1",
         name: "Starter Prime Account",
-        desc: "Freshly created Prime account with elite pass unlocked, 2500+ diamonds, starter legendary skin bundle and clean play history.",
+        desc: "Freshly created Prime account with elite pass unlocked, starter legendary skin bundle, exclusive emotes and completely clean play history.",
         icon: "fas fa-seedling"
       },
       {
         tier: "TIER 2",
         name: "Rising Prime Account",
-        desc: "Solid Tier 2 Prime loaded with rare weapon skins, 4000 diamonds, elite battle pass rewards and multiple exclusive emotes.",
+        desc: "Solid Tier 2 Prime loaded with rare weapon skins, elite battle pass rewards, multiple exclusive emotes and special bonus items.",
         icon: "fas fa-fire"
       },
       {
         tier: "TIER 3",
         name: "Veteran Prime Account",
-        desc: "Well-established Tier 3 account featuring limited-time bundles, 6000 diamonds, full elite pass collection and high KD history.",
+        desc: "Well-established Tier 3 account featuring limited-time bundles, full elite pass collection, high KD history and extra rewards.",
         icon: "fas fa-shield-alt"
       },
       {
         tier: "TIER 4",
         name: "Elite Prime Account",
-        desc: "Premium Tier 4 Prime with legendary character bundles, 8500 diamonds, rare vehicle skins and complete seasonal rewards.",
+        desc: "Premium Tier 4 Prime with legendary character bundles, rare vehicle skins, complete seasonal rewards and special packs.",
         icon: "fas fa-gem"
       },
       {
         tier: "TIER 5",
         name: "Pro Prime Account",
-        desc: "High-level Tier 5 account stacked with exclusive mythic skins, 11000 diamonds, maxed battle pass and tournament-ready setup.",
+        desc: "High-level Tier 5 account stacked with exclusive mythic skins, maxed battle pass, tournament-ready setup and extra content.",
         icon: "fas fa-trophy"
       },
       {
         tier: "TIER 6",
         name: "Master Prime Account",
-        desc: "Tier 6 Prime loaded with ultra-rare bundles, 14000 diamonds, all limited edition skins and verified clean account history.",
+        desc: "Tier 6 Prime loaded with ultra-rare bundles, all limited edition skins, verified clean account history and premium items.",
         icon: "fas fa-crown"
       },
       {
         tier: "TIER 7",
         name: "Legendary Prime Account",
-        desc: "God-tier Tier 7 account with 17000+ diamonds, every legendary skin available, elite passes from multiple seasons and max prestige.",
+        desc: "God-tier Tier 7 account with every legendary skin available, elite passes from multiple seasons, max prestige and huge collection.",
         icon: "fas fa-dragon"
       },
       {
         tier: "TIER 8",
         name: "God Tier Prime Account",
-        desc: "Ultimate Tier 8 Prime — fully maxed with 20000+ diamonds, all rarest bundles, mythic weapons, lifetime elite status and flawless record.",
+        desc: "Ultimate Tier 8 Prime — fully maxed with all rarest bundles, mythic weapons, lifetime elite status, flawless record and massive rewards.",
+        icon: "fas fa-star"
+      }
+    ];
+
+    // NEW: CODM ACCOUNTS (no diamonds)
+    const codmAccounts = [
+      {
+        tier: "CODM BRONZE",
+        name: "Starter CODM Account",
+        desc: "Fresh Call of Duty Mobile account with battle pass unlocked, starter legendary skin bundle, exclusive emotes and clean history.",
+        icon: "fas fa-seedling"
+      },
+      {
+        tier: "CODM SILVER",
+        name: "Rising CODM Account",
+        desc: "Solid Silver account loaded with rare weapon skins, elite battle pass rewards, multiple exclusive emotes and special bonus items.",
+        icon: "fas fa-fire"
+      },
+      {
+        tier: "CODM GOLD",
+        name: "Veteran CODM Account",
+        desc: "Well-established Gold account featuring limited-time bundles, full elite pass collection, high KD history and extra rewards.",
+        icon: "fas fa-shield-alt"
+      },
+      {
+        tier: "CODM PLATINUM",
+        name: "Elite CODM Account",
+        desc: "Premium Platinum account with legendary character bundles, rare vehicle skins, complete seasonal rewards and special packs.",
+        icon: "fas fa-gem"
+      },
+      {
+        tier: "CODM DIAMOND",
+        name: "Pro CODM Account",
+        desc: "High-level Diamond account stacked with exclusive mythic skins, maxed battle pass, tournament-ready setup and extra content.",
+        icon: "fas fa-trophy"
+      },
+      {
+        tier: "CODM MASTER",
+        name: "Master CODM Account",
+        desc: "Master account loaded with ultra-rare bundles, all limited edition skins, verified clean history and premium items.",
+        icon: "fas fa-crown"
+      },
+      {
+        tier: "CODM LEGENDARY",
+        name: "Legendary CODM Account",
+        desc: "God-tier Legendary account with every legendary skin available, elite passes from multiple seasons, max prestige and huge collection.",
+        icon: "fas fa-dragon"
+      },
+      {
+        tier: "CODM MYTHIC",
+        name: "Mythic CODM Account",
+        desc: "Ultimate Mythic account — fully maxed with all rarest bundles, mythic weapons, lifetime elite status, flawless record and massive rewards.",
         icon: "fas fa-star"
       }
     ];
@@ -256,17 +352,20 @@
       card.className = `product-card rounded-3xl overflow-hidden card-hover`;
 
       card.innerHTML = `
-        <div class="img-placeholder">
-          <i class="${icon} text-8xl text-white/90 drop-shadow-2xl"></i>
-          <span class="absolute top-4 right-4 bg-gradient-to-r from-orange-500 to-purple-600 text-white text-xs font-black px-4 py-1 rounded-3xl backdrop-blur-md shadow-inner">${tier}</span>
-        </div>
+        <!-- Picture links to Home (as requested earlier) -->
+        <a href="index.html" class="block">
+          <div class="img-placeholder">
+            <i class="${icon} text-8xl text-white/90 drop-shadow-2xl"></i>
+            <span class="absolute top-4 right-4 bg-gradient-to-r from-orange-500 to-purple-600 text-white text-xs font-black px-4 py-1 rounded-3xl backdrop-blur-md shadow-inner">${tier}</span>
+          </div>
+        </a>
 
         <!-- WhatsApp button UNDER the picture -->
         <div class="px-6 -mt-7 relative z-10">
           <button onclick="orderViaWA(this)" 
                   class="whatsapp-btn w-full bg-[#25D366] hover:bg-[#22c35a] text-white font-bold py-4 px-6 rounded-3xl flex items-center justify-center gap-3 shadow-2xl text-lg">
             <i class="fab fa-whatsapp text-3xl"></i>
-            ORDER VIA WHATSAPP
+            Buy Now
           </button>
         </div>
 
@@ -286,10 +385,17 @@
       window.open(BASE_WA_URL + message, "_blank");
     }
 
-    function renderPrimeAccounts() {
-      const grid = document.getElementById("prime-accounts-grid");
-      primeAccountsData.forEach(account => {
-        grid.appendChild(createAccountCard(account.tier, account.name, account.desc, account.icon));
+    function renderAccounts() {
+      // Free Fire
+      const ffGrid = document.getElementById("freefire-grid");
+      freeFireAccounts.forEach(account => {
+        ffGrid.appendChild(createAccountCard(account.tier, account.name, account.desc, account.icon));
+      });
+
+      // CODM
+      const codmGrid = document.getElementById("codm-grid");
+      codmAccounts.forEach(account => {
+        codmGrid.appendChild(createAccountCard(account.tier, account.name, account.desc, account.icon));
       });
     }
 
@@ -305,7 +411,7 @@
     }
 
     // Render everything
-    renderPrimeAccounts();
+    renderAccounts();
   </script>
 </body>
-    </html>
+</html>
