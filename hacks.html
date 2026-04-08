@@ -46,7 +46,7 @@
           <a href="hacks.html" class="nav-link nav-active flex items-center gap-1"><i class="fas fa-bolt"></i> Hacks & Panels</a>
         </div>
 
-        <a href="https://wa.me/2349169939848" target="_blank" class="hidden md:flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-3xl font-semibold text-sm transition-colors">
+        <a href="https://wa.me/2349124805162" target="_blank" class="hidden md:flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-3xl font-semibold text-sm transition-colors">
           <i class="fab fa-whatsapp text-xl"></i>
           <span>Buy Now</span>
         </a>
@@ -62,7 +62,7 @@
         <a href="index.html" class="flex items-center gap-3"><i class="fas fa-home"></i> Home</a>
         <a href="accounts.html" class="flex items-center gap-3"><i class="fas fa-fire"></i> Prime Accounts</a>
         <a href="hacks.html" class="flex items-center gap-3 text-orange-600"><i class="fas fa-bolt"></i> Hacks & Panels</a>
-        <a href="https://wa.me/2349169939848" target="_blank" class="mt-4 flex items-center justify-center gap-3 bg-green-500 text-white py-4 rounded-3xl font-semibold">
+        <a href="https://wa.me/2349124805162" target="_blank" class="mt-4 flex items-center justify-center gap-3 bg-green-500 text-white py-4 rounded-3xl font-semibold">
           <i class="fab fa-whatsapp text-2xl"></i> Buy Now
         </a>
       </div>
@@ -106,7 +106,7 @@
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="android-best-grid"></div>
     </div>
 
-    <!-- CODM iOS (keeps clean style) -->
+    <!-- CODM iOS -->
     <div class="mb-16">
       <div class="flex items-center gap-4 mb-8">
         <i class="fab fa-apple text-5xl text-indigo-400"></i>
@@ -117,11 +117,11 @@
 
   </main>
 
-  <!-- Final CTA & Footer (same as before) -->
+  <!-- Final CTA -->
   <div class="bg-gradient-to-r from-orange-500 to-purple-600 py-16 text-center">
     <div class="max-w-2xl mx-auto px-4">
       <p class="text-3xl font-bold mb-4">Ready to turn on god mode?</p>
-      <a href="https://wa.me/2349169939848" target="_blank" class="inline-flex items-center gap-4 bg-white text-slate-900 px-10 py-5 rounded-3xl text-2xl font-semibold hover:scale-105 transition-transform">
+      <a href="https://wa.me/2349124805162" target="_blank" class="inline-flex items-center gap-4 bg-white text-slate-900 px-10 py-5 rounded-3xl text-2xl font-semibold hover:scale-105 transition-transform">
         <i class="fab fa-whatsapp text-4xl text-green-500"></i> Buy Now
       </a>
     </div>
@@ -135,7 +135,7 @@
   </footer>
 
   <script>
-    const WA_NUMBER = "2349169939848";
+    const WA_NUMBER = "2349124805162";
     const BASE_WA_URL = `https://wa.me/${WA_NUMBER}?text=`;
 
     function generateWAMessage(productName, duration) {
@@ -190,27 +190,48 @@
     }
 
     function renderPanels() {
-      // iPhone
+      // iPhone Panel
       const iphoneGrid = document.getElementById("iphone-panel-grid");
-      [{duration:"1 DAY",desc:"Full access + VIP support"},{duration:"7 DAYS",desc:"Weekly panel + priority"},{duration:"30 DAYS",desc:"Monthly elite access"},{duration:"PERMANENT",desc:"Lifetime license + updates"}].forEach(opt => {
+      [
+        {duration: "1 DAY - 11k", desc: "Full access + VIP support"},
+        {duration: "7 DAYS - 30k", desc: "Weekly panel + priority"},
+        {duration: "30 DAYS - 75k", desc: "Monthly elite access"},
+        {duration: "PERMANENT - 200k", desc: "Lifetime license + updates"}
+      ].forEach(opt => {
         iphoneGrid.appendChild(createHackCard("iPhone Panel (100% Safe)", opt.duration, opt.desc, "fab fa-apple", "#60a5fa"));
       });
 
       // Android Standard
       const stdGrid = document.getElementById("android-standard-grid");
-      [{duration:"1 DAY",desc:"Headshot + Aimbot Basic"},{duration:"7 DAYS",desc:"Advanced prediction"},{duration:"15 DAYS",desc:"Pro features"},{duration:"30 DAYS",desc:"Ultra smooth aim"},{duration:"PERMANENT",desc:"Lifetime + spoofer"}].forEach(opt => {
-        stdGrid.appendChild(createHackCard("Android Headshot Panel", opt.duration, opt.desc, "fab fa-android", "#4ade80"));
+      [
+        {duration: "1 DAY - 4k", desc: "Headshot / Aimbot Panel • 100% safe for main ID"},
+        {duration: "7 DAYS - 11k", desc: "Advanced prediction"},
+        {duration: "15 DAYS - 18k", desc: "Pro features"},
+        {duration: "30 DAYS - 30k", desc: "Ultra smooth aim"},
+        {duration: "PERMANENT - 100k", desc: "Lifetime + spoofer"}
+      ].forEach(opt => {
+        stdGrid.appendChild(createHackCard("Android Headshot Panel (Standard)", opt.duration, opt.desc, "fab fa-android", "#4ade80"));
       });
 
-      // Android Ultra
+      // Android Best
       const bestGrid = document.getElementById("android-best-grid");
-      [{duration:"3 DAYS",desc:"Max headshot rate"},{duration:"7 DAYS",desc:"Rank ready + antiban"},{duration:"15 DAYS",desc:"Ultra pro panel"},{duration:"PERMANENT",desc:"Premium lifetime + updates"}].forEach(opt => {
+      [
+        {duration: "3 DAYS - 10k", desc: "Max headshot rate"},
+        {duration: "7 DAYS - 18k", desc: "Rank ready + antiban"},
+        {duration: "15 DAYS - 30k", desc: "Ultra pro panel"},
+        {duration: "PERMANENT - 120k", desc: "Premium lifetime + updates"}
+      ].forEach(opt => {
         bestGrid.appendChild(createHackCard("Android Best Headshot Panel (Ultra)", opt.duration, opt.desc, "fas fa-bolt", "#fcd34d"));
       });
 
-      // CODM stays with icon (as requested - only Free Fire uses your pictures)
+      // CODM iOS (keeps clean style)
       const codmGrid = document.getElementById("codm-ios-grid");
-      [{duration:"1 DAY",desc:"Aimbot + Wallhack Basic"},{duration:"7 DAYS",desc:"Advanced ESP + No Recoil"},{duration:"15 DAYS",desc:"Full suite + Radar"},{duration:"PERMANENT",desc:"Lifetime iOS CODM Hack + Updates"}].forEach(opt => {
+      [
+        {duration: "1 DAY", desc: "Aimbot + Wallhack Basic"},
+        {duration: "7 DAYS", desc: "Advanced ESP + No Recoil"},
+        {duration: "15 DAYS", desc: "Full suite + Radar"},
+        {duration: "PERMANENT", desc: "Lifetime iOS CODM Hack + Updates"}
+      ].forEach(opt => {
         const card = document.createElement("div");
         card.className = `product-card rounded-3xl overflow-hidden card-hover`;
         card.innerHTML = `
@@ -243,4 +264,4 @@
     renderPanels();
   </script>
 </body>
-</html>
+  </html>
