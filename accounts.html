@@ -6,123 +6,264 @@
   <title>Hack King • Prime Accounts</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
-    
-    * { font-family: 'Inter', sans-serif; }
-    .heading-font { font-family: 'Space Grotesk', sans-serif; }
-    
-    body {
-      background: linear-gradient(145deg, #0f172a 0%, #1e1133 100%);
-      color: #f8fafc;
+    /* ── Base ── */
+    * {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    
+    .heading-font {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .mono-font {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    body {
+      background: #0b0d15;
+      color: #e2e8f0;
+      overflow-x: hidden;
+    }
+
+    /* ── Animated Canvas Background ── */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── Glow Utilities ── */
+    .glow-cyan {
+      text-shadow: 0 0 12px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.25);
+    }
+    .glow-purple {
+      text-shadow: 0 0 12px rgba(168, 85, 247, 0.7), 0 0 40px rgba(168, 85, 247, 0.3);
+    }
+    .glow-green {
+      text-shadow: 0 0 12px rgba(74, 222, 128, 0.6), 0 0 40px rgba(74, 222, 128, 0.25);
+    }
+    .glow-orange {
+      text-shadow: 0 0 12px rgba(251, 146, 60, 0.7), 0 0 40px rgba(251, 146, 60, 0.3);
+    }
+
+    /* ── Glassmorphism ── */
+    .glass {
+      background: rgba(11, 13, 21, 0.75);
+      backdrop-filter: blur(18px) saturate(1.4);
+      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .glass-light {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* ── Navigation ── */
     .nav-link {
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s ease;
+      position: relative;
+      letter-spacing: 0.3px;
     }
     .nav-link:hover {
-      transform: translateY(-2px);
-      color: #f97316 !important;
+      color: #00ffff !important;
+      text-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
     }
     .nav-active {
-      color: #f97316;
-      position: relative;
+      color: #00ffff !important;
     }
     .nav-active::after {
       content: '';
       position: absolute;
-      bottom: -2px;
+      bottom: -4px;
       left: 0;
       width: 100%;
-      height: 3px;
-      background: linear-gradient(to right, #f97316, #a855f7);
+      height: 2px;
+      background: linear-gradient(90deg, #00ffff, #a855f7);
       border-radius: 9999px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
     }
-    
+
+    /* ── Card Hover ── */
     .card-hover {
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     }
     .card-hover:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 20px 25px -5px rgb(249 115 22 / 0.3), 0 8px 10px -6px rgb(168 85 247 / 0.3);
+      transform: translateY(-10px) scale(1.02);
+      border-color: rgba(0, 255, 255, 0.3) !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 255, 255, 0.2), 0 0 40px rgba(0, 255, 255, 0.05);
     }
-    
-    .neon-text {
-      text-shadow: 0 0 20px #f97316, 0 0 40px #a855f7;
-    }
-    
-    .section-header {
-      background: linear-gradient(to right, #f97316, #a855f7, #22c55e);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .product-card {
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-    
-    .img-placeholder {
-      background: linear-gradient(145deg, #1e2937, #334155);
-      min-height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+    /* ── Hero Scanline ── */
+    .hero-scanline {
       position: relative;
       overflow: hidden;
-      transition: all 0.3s ease;
     }
-    .img-placeholder:hover {
-      filter: brightness(1.15);
+    .hero-scanline::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(0deg,
+          transparent,
+          transparent 3px,
+          rgba(0, 255, 255, 0.015) 3px,
+          rgba(0, 255, 255, 0.015) 6px);
+      pointer-events: none;
+      z-index: 1;
     }
-    
+
+    /* ── Cursor blink ── */
+    .cursor-blink {
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+    }
+
+    /* ── Floating particles ── */
+    .particle-float {
+      animation: floatUp 18s infinite linear;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* ── Glitch text (subtle) ── */
+    .glitch-text {
+      position: relative;
+    }
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.6;
+    }
+    .glitch-text::before {
+      color: #00ffff;
+      z-index: -1;
+      transform: translate(-2px, -2px);
+      animation: glitchShift 3s infinite;
+    }
+    .glitch-text::after {
+      color: #a855f7;
+      z-index: -1;
+      transform: translate(2px, 2px);
+      animation: glitchShift 3s infinite reverse;
+    }
+    @keyframes glitchShift {
+      0%,
+      100% {
+        transform: translate(-2px, -2px);
+      }
+      33% {
+        transform: translate(2px, -1px);
+      }
+      66% {
+        transform: translate(-1px, 2px);
+      }
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar {
+      width: 8px;
+      background: #0b0d15;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #00ffff, #a855f7);
+      border-radius: 9999px;
+    }
+
+    /* ── Product card image placeholder ── */
+    .img-placeholder {
+      min-height: 200px;
+      overflow: hidden;
+      position: relative;
+      background: radial-gradient(circle at 30% 30%, rgba(0,255,255,0.05), transparent 70%);
+    }
+    .img-placeholder i {
+      filter: drop-shadow(0 0 20px rgba(0,255,255,0.1));
+    }
+
+    /* ── Mobile menu ── */
+    #mobile-menu {
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      background: rgba(11, 13, 21, 0.92);
+      border-top: 1px solid rgba(0, 255, 255, 0.1);
+    }
+
+    /* ── Social Buttons ── */
     .social-btn {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s ease;
     }
     .social-btn:hover {
       transform: scale(1.03);
       filter: brightness(1.1);
     }
-
-    /* Mobile menu */
-    #mobile-menu {
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-    }
   </style>
 </head>
-<body class="antialiased">
+<body>
 
-  <!-- Navigation -->
-  <nav class="bg-white/95 backdrop-blur-xl shadow-xl sticky top-0 z-50 border-b border-orange-200">
+  <!-- ===== CANVAS BACKGROUND ===== -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- ===== NAVIGATION (glass) ===== -->
+  <nav class="glass sticky top-0 z-50 border-b border-[rgba(0,255,255,0.08)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-4">
-        
+      <div class="flex justify-between items-center py-3 md:py-4">
+
         <!-- Logo -->
-        <a href="index.html" class="flex items-center gap-3 hover:scale-105 transition-transform">
-          <div class="bg-gradient-to-br from-orange-500 via-purple-500 to-green-400 p-3 rounded-2xl shadow-inner">
-            <i class="fas fa-crown text-white text-3xl drop-shadow-md"></i>
+        <a href="index.html" class="flex items-center gap-3 hover:scale-105 transition-transform duration-300 relative group">
+          <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-400 via-purple-500 to-green-400 rounded-2xl blur-xl opacity-40 group-hover:opacity-70 transition-opacity"></div>
+            <div class="relative bg-gradient-to-br from-cyan-500 via-purple-600 to-green-500 p-2.5 rounded-2xl shadow-2xl shadow-cyan-500/20">
+              <i class="fas fa-crown text-white text-2xl md:text-3xl drop-shadow-lg"></i>
+            </div>
           </div>
           <div>
-            <span class="heading-font text-3xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-purple-600">Hack</span>
-            <span class="heading-font text-3xl font-bold tracking-tighter text-slate-800">King</span>
+            <span class="heading-font text-2xl md:text-3xl font-bold tracking-tighter glow-cyan">Hack</span>
+            <span class="heading-font text-2xl md:text-3xl font-bold tracking-tighter text-white">King</span>
+            <div class="mono-font text-[10px] tracking-[0.3em] text-cyan-400/70 uppercase">elite hub</div>
           </div>
         </a>
 
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex items-center gap-8 text-base font-semibold text-slate-700">
-          <a href="index.html" class="nav-link flex items-center gap-1">
-            <i class="fas fa-home"></i> Home
-          </a>
-          <a href="accounts.html" class="nav-link nav-active flex items-center gap-1">
-            <i class="fas fa-fire"></i> Prime Accounts
-          </a>
-          <a href="hacks.html" class="nav-link flex items-center gap-1">
-            <i class="fas fa-bolt"></i> Hacks & Panels
-          </a>
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-6 lg:gap-10 text-sm font-semibold uppercase tracking-wider text-gray-300">
+          <a href="index.html" class="nav-link flex items-center gap-2"><i class="fas fa-home text-xs"></i> Home</a>
+          <a href="accounts.html" class="nav-link nav-active flex items-center gap-2"><i class="fas fa-fire text-xs"></i> Prime Accounts</a>
+          <a href="hacks.html" class="nav-link flex items-center gap-2"><i class="fas fa-bolt text-xs"></i> Hacks & Panels</a>
         </div>
 
         <!-- CTA Buttons: WhatsApp + Telegram -->
@@ -140,79 +281,90 @@
         </div>
 
         <!-- Mobile Hamburger -->
-        <button onclick="toggleMobileMenu()" class="md:hidden text-3xl text-slate-700 hover:text-orange-600 transition-colors">
+        <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-white hover:text-cyan-400 transition-colors">
           <i class="fas fa-bars" id="hamburger-icon"></i>
         </button>
       </div>
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-orange-100 px-4 py-6">
-      <div class="flex flex-col gap-6 text-lg font-medium">
-        <a href="index.html" class="flex items-center gap-3">
-          <i class="fas fa-home"></i> Home
-        </a>
-        <a href="accounts.html" class="flex items-center gap-3 text-orange-600">
-          <i class="fas fa-fire"></i> Prime Accounts
-        </a>
-        <a href="hacks.html" class="flex items-center gap-3">
-          <i class="fas fa-bolt"></i> Hacks & Panels
-        </a>
-        <a href="https://wa.me/2349169939848" target="_blank"
-           class="mt-4 flex items-center justify-center gap-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3.5 rounded-full font-semibold">
+    <div id="mobile-menu" class="hidden md:hidden px-4 py-6">
+      <div class="flex flex-col gap-5 text-base font-medium text-gray-200">
+        <a href="index.html" class="flex items-center gap-3 hover:text-cyan-400 transition"><i class="fas fa-home w-5 text-cyan-400"></i> Home</a>
+        <a href="accounts.html" class="flex items-center gap-3 text-cyan-400"><i class="fas fa-fire w-5 text-orange-400"></i> Prime Accounts</a>
+        <a href="hacks.html" class="flex items-center gap-3 hover:text-cyan-400 transition"><i class="fas fa-bolt w-5 text-purple-400"></i> Hacks & Panels</a>
+        <a href="https://wa.me/2349169939848" target="_blank" class="mt-2 flex items-center justify-center gap-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3.5 rounded-full font-semibold">
           <i class="fab fa-whatsapp text-xl"></i> Buy Now
         </a>
-        <a href="https://t.me/justreaper01" target="_blank"
-           class="flex items-center justify-center gap-3 bg-gradient-to-r from-sky-500 to-blue-600 text-white py-3.5 rounded-full font-semibold">
+        <a href="https://t.me/justreaper01" target="_blank" class="flex items-center justify-center gap-3 bg-gradient-to-r from-sky-500 to-blue-600 text-white py-3.5 rounded-full font-semibold">
           <i class="fab fa-telegram-plane text-xl"></i> Telegram
         </a>
       </div>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <header class="hero-bg pt-16 pb-20 md:pt-24 md:pb-28 text-center relative overflow-hidden" style="background: linear-gradient(90deg, rgba(249, 115, 22, 0.9) 0%, rgba(168, 85, 247, 0.85) 100%); box-shadow: 0 25px 50px -12px rgb(249 115 22);">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md text-white text-sm font-medium px-6 py-2 rounded-3xl mb-6">
-        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-        VERIFIED • CLEAN HISTORY • INSTANT LOGIN
+  <!-- ===== HERO ===== -->
+  <header class="hero-scanline relative pt-20 pb-16 md:pt-28 md:pb-20 text-center overflow-hidden" style="background: radial-gradient(ellipse at 30% 20%, rgba(0,255,255,0.06) 0%, transparent 60%), radial-gradient(ellipse at 70% 80%, rgba(168,85,247,0.08) 0%, transparent 50%), #0b0d15;">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+      <div class="particle-float absolute text-cyan-400/10 text-4xl top-[10%] left-[5%]">⦿</div>
+      <div class="particle-float absolute text-purple-400/10 text-3xl top-[30%] right-[8%]" style="animation-duration:22s; animation-delay:2s;">◈</div>
+      <div class="particle-float absolute text-green-400/10 text-2xl top-[60%] left-[12%]" style="animation-duration:25s; animation-delay:4s;">✦</div>
+      <div class="particle-float absolute text-cyan-400/10 text-5xl top-[80%] right-[15%]" style="animation-duration:20s; animation-delay:6s;">◉</div>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+      <div class="inline-flex items-center gap-3 bg-white/5 backdrop-blur-md border border-cyan-500/20 text-cyan-300 text-xs md:text-sm font-medium px-5 py-2 rounded-full mb-6 shadow-lg shadow-cyan-500/5">
+        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></span>
+        <span class="mono-font tracking-widest">● VERIFIED ● CLEAN HISTORY ● INSTANT LOGIN</span>
       </div>
-      
-      <h1 class="heading-font text-5xl md:text-7xl font-bold leading-none tracking-tighter neon-text mb-4">
-        PRIME ACCOUNTS<br>TIER 1 — 8
+
+      <h1 class="heading-font text-5xl md:text-7xl lg:text-8xl font-bold leading-none tracking-tighter mb-4">
+        <span class="glow-cyan">Prime</span>
+        <span class="text-white">Accounts</span>
+        <br class="hidden sm:block" />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-green-400 glow-purple">Tier 1 – 8</span>
       </h1>
-      
-      <p class="text-xl md:text-2xl text-white/90 max-w-lg mx-auto">
-        Fully loaded Free Fire &amp; CODM accounts • Rare skins • Elite Passes • Legendary Bundles
+
+      <p class="text-lg md:text-2xl text-gray-300 max-w-2xl mx-auto mb-6 leading-relaxed">
+        <span class="mono-font text-cyan-400">#</span> Free Fire &amp; CODM • Rare Skins • Elite Passes • Legendary Bundles
       </p>
 
-      <div class="flex flex-wrap justify-center gap-4 mt-10">
+      <div class="flex flex-wrap justify-center gap-4">
         <a href="https://wa.me/2349169939848" target="_blank"
-           class="bg-white text-slate-900 hover:bg-orange-100 px-8 py-4 rounded-3xl font-semibold text-lg flex items-center gap-3 transition-all">
-          <i class="fab fa-whatsapp text-3xl text-green-500"></i> WhatsApp
+           class="group relative px-8 py-3 rounded-full font-semibold text-base flex items-center gap-3 transition-all overflow-hidden border border-green-500/30 hover:border-green-400">
+          <span class="absolute inset-0 bg-green-500/5 rounded-full"></span>
+          <span class="relative text-white flex items-center gap-3"><i class="fab fa-whatsapp text-green-400"></i> WhatsApp</span>
         </a>
         <a href="https://t.me/justreaper01" target="_blank"
-           class="bg-white text-slate-900 hover:bg-orange-100 px-8 py-4 rounded-3xl font-semibold text-lg flex items-center gap-3 transition-all">
-          <i class="fab fa-telegram-plane text-3xl text-sky-500"></i> Telegram
+           class="group relative px-8 py-3 rounded-full font-semibold text-base flex items-center gap-3 transition-all overflow-hidden border border-sky-500/30 hover:border-sky-400">
+          <span class="absolute inset-0 bg-sky-500/5 rounded-full"></span>
+          <span class="relative text-white flex items-center gap-3"><i class="fab fa-telegram-plane text-sky-400"></i> Telegram</span>
         </a>
+      </div>
+
+      <div class="mt-10 mono-font text-xs text-gray-500/60 select-none">
+        <span class="text-cyan-400">root@hackking</span>:<span class="text-purple-400">~</span>$ <span class="text-green-400">display_accounts</span> <span class="cursor-blink">█</span>
       </div>
     </div>
   </header>
 
-  <!-- Bonus Banner -->
-  <div class="max-w-7xl mx-auto px-4 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white text-center font-bold flex items-center justify-center gap-3">
-    <i class="fas fa-gift text-2xl"></i>
-    BONUS: GET 10% OFF ON YOUR FIRST PURCHASE
+  <!-- ===== BONUS BANNER ===== -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 -mt-4">
+    <div class="glass-light px-6 py-4 rounded-2xl border border-green-500/10 text-center">
+      <p class="text-sm font-bold text-green-400">
+        <i class="fas fa-gift mr-2"></i> BONUS: GET 10% OFF ON YOUR FIRST PURCHASE
+      </p>
+    </div>
   </div>
 
-  <!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
     <!-- Free Fire Prime Accounts -->
     <div class="mb-20">
       <div class="flex items-center gap-4 mb-8">
         <i class="fas fa-fire text-5xl text-orange-400"></i>
-        <h2 class="text-4xl font-bold heading-font section-header">🔥 FREE FIRE PRIME ACCOUNTS (Tier 1–8)</h2>
+        <h2 class="heading-font text-3xl md:text-4xl font-bold glow-orange">🔥 FREE FIRE PRIME ACCOUNTS</h2>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="freefire-grid"></div>
     </div>
@@ -221,44 +373,59 @@
     <div>
       <div class="flex items-center gap-4 mb-8">
         <i class="fas fa-gamepad text-5xl text-indigo-400"></i>
-        <h2 class="text-4xl font-bold heading-font section-header">🎮 CODM ACCOUNTS (Call of Duty Mobile)</h2>
+        <h2 class="heading-font text-3xl md:text-4xl font-bold" style="text-shadow: 0 0 12px rgba(99,102,241,0.5);">🎮 CODM ACCOUNTS</h2>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="codm-grid"></div>
     </div>
 
-  </main>
-
-  <!-- Final CTA -->
-  <div class="bg-gradient-to-r from-orange-500 to-purple-600 py-16 text-center">
-    <div class="max-w-2xl mx-auto px-4">
-      <p class="text-3xl font-bold mb-4">Ready for your own god‑tier account?</p>
-      <p class="text-xl text-white/90 mb-8">Choose any Free Fire or CODM account above + enjoy 10% off your first purchase.</p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="https://wa.me/2349169939848" target="_blank"
-           class="inline-flex items-center gap-4 bg-white text-slate-900 px-8 py-4 rounded-3xl text-xl font-semibold hover:scale-105 transition-transform shadow-lg">
-          <i class="fab fa-whatsapp text-3xl text-green-500"></i> WhatsApp
-        </a>
-        <a href="https://t.me/justreaper01" target="_blank"
-           class="inline-flex items-center gap-4 bg-white text-slate-900 px-8 py-4 rounded-3xl text-xl font-semibold hover:scale-105 transition-transform shadow-lg">
-          <i class="fab fa-telegram-plane text-3xl text-sky-500"></i> Telegram
-        </a>
+    <!-- Final CTA -->
+    <div class="text-center mt-16">
+      <div class="glass p-10 rounded-3xl border border-cyan-500/10 max-w-3xl mx-auto">
+        <h3 class="heading-font text-3xl font-bold mb-4">Ready for your own god‑tier account?</h3>
+        <p class="text-gray-400 mb-6">Choose any account above and get 10% off your first purchase.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://wa.me/2349169939848" target="_blank" class="social-btn inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg shadow-green-500/30">
+            <i class="fab fa-whatsapp text-2xl"></i> WhatsApp
+          </a>
+          <a href="https://t.me/justreaper01" target="_blank" class="social-btn inline-flex items-center gap-3 bg-gradient-to-r from-sky-500 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg shadow-blue-500/30">
+            <i class="fab fa-telegram-plane text-2xl"></i> Telegram
+          </a>
+        </div>
+        <p class="text-xs text-gray-500 mt-4 mono-font">@justreaper01 • 24/7 support</p>
       </div>
     </div>
-  </div>
 
-  <!-- Footer -->
-  <footer class="bg-slate-950 py-12 text-white/70">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <p class="text-sm">© 2026 Hack King — Elite Gaming Hub</p>
-      <p class="text-xs mt-2">All transactions are simulated for demo purposes only. For educational and entertainment use.</p>
-      <div class="flex justify-center gap-6 mt-8 text-2xl">
-        <i class="fab fa-whatsapp cursor-pointer hover:text-green-400"></i>
-        <i class="fab fa-telegram cursor-pointer hover:text-blue-400"></i>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="border-t border-[rgba(255,255,255,0.04)] py-10 relative z-10">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <div class="flex justify-center items-center gap-6 text-sm text-gray-500 mono-font">
+        <span>© 2026 <span class="text-cyan-400">HackKing</span></span>
+        <span class="w-px h-4 bg-gray-700"></span>
+        <span><i class="fas fa-shield-alt text-cyan-400/50 mr-1"></i> encrypted</span>
+        <span class="w-px h-4 bg-gray-700"></span>
+        <span><i class="fas fa-code text-purple-400/50 mr-1"></i> v3.2.0</span>
+      </div>
+      <div class="mt-3 flex justify-center gap-4 text-gray-600 text-xs mono-font">
+        <span class="text-cyan-400/40">● system_online</span>
+        <span class="text-green-400/40">● all_green</span>
+        <span class="text-purple-400/40">● undetected</span>
       </div>
     </div>
   </footer>
 
+  <!-- ===== SCRIPTS ===== -->
   <script>
+    // ── Mobile Menu ──
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const icon = document.getElementById('hamburger-icon');
+      menu.classList.toggle('hidden');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-xmark');
+    }
+
     // ── Social Links ──
     const WA_NUMBER = "2349169939848";
     const TG_USERNAME = "justreaper01";
@@ -295,21 +462,21 @@
     // ── Create Account Card ──
     function createAccountCard(tier, name, desc, icon) {
       const card = document.createElement("div");
-      card.className = "product-card rounded-3xl overflow-hidden card-hover";
+      card.className = "glass rounded-3xl overflow-hidden card-hover border border-[rgba(255,255,255,0.06)]";
 
       card.innerHTML = `
         <!-- Picture links to Home -->
         <a href="index.html" class="block">
           <div class="img-placeholder">
             <i class="${icon} text-8xl text-white/90 drop-shadow-2xl"></i>
-            <span class="absolute top-4 right-4 bg-gradient-to-r from-orange-500 to-purple-600 text-white text-xs font-black px-4 py-1 rounded-3xl backdrop-blur-md shadow-inner">${tier}</span>
+            <span class="absolute top-4 right-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-xs font-black px-4 py-1 rounded-3xl backdrop-blur-md shadow-inner">${tier}</span>
           </div>
         </a>
 
         <!-- Two buttons: WhatsApp & Telegram -->
         <div class="p-6 pt-4">
-          <h4 class="text-2xl font-bold mb-2">${name}</h4>
-          <p class="text-slate-300 leading-relaxed mb-4">${desc}</p>
+          <h4 class="text-2xl font-bold mb-2 text-white">${name}</h4>
+          <p class="text-gray-400 leading-relaxed mb-4">${desc}</p>
           <div class="flex flex-col sm:flex-row gap-3">
             <button onclick="orderViaWA(this)" 
                     class="social-btn flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white font-bold py-3 px-4 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-green-500/20 transition-all text-sm">
@@ -327,14 +494,14 @@
 
     // ── Order Functions ──
     function orderViaWA(btn) {
-      const card = btn.closest('.product-card');
+      const card = btn.closest('.glass');
       const accountName = card.querySelector('h4').textContent.trim();
       const msg = generateMessage(accountName);
       window.open(BASE_WA_URL + encodeURIComponent(msg), "_blank");
     }
 
     function orderViaTG(btn) {
-      const card = btn.closest('.product-card');
+      const card = btn.closest('.glass');
       const accountName = card.querySelector('h4').textContent.trim();
       const msg = generateMessage(accountName);
       window.open(BASE_TG_URL + encodeURIComponent(msg), "_blank");
@@ -353,20 +520,92 @@
       });
     }
 
-    // ── Mobile Menu Toggle ──
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobile-menu');
-      const icon = document.getElementById('hamburger-icon');
-      menu.classList.toggle('hidden');
-      if (menu.classList.contains('hidden')) {
-        icon.classList.replace('fa-xmark', 'fa-bars');
-      } else {
-        icon.classList.replace('fa-bars', 'fa-xmark');
-      }
-    }
+    // ── Canvas Background (same as index & hacks) ──
+    (function initCanvas() {
+      const canvas = document.getElementById('bg-canvas');
+      const ctx = canvas.getContext('2d');
+      let w, h;
 
-    // ── Init ──
+      function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      const gridSpacing = 60;
+      const dotColor = 'rgba(0,255,255,0.06)';
+      const lineColor = 'rgba(0,255,255,0.015)';
+
+      const particles = [];
+      const PARTICLE_COUNT = 60;
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          r: Math.random() * 2 + 0.5,
+          alpha: Math.random() * 0.5 + 0.1,
+        });
+      }
+
+      function drawGrid() {
+        ctx.clearRect(0, 0, w, h);
+        for (let x = gridSpacing; x < w; x += gridSpacing) {
+          for (let y = gridSpacing; y < h; y += gridSpacing) {
+            ctx.beginPath();
+            ctx.arc(x, y, 0.8, 0, Math.PI * 2);
+            ctx.fillStyle = dotColor;
+            ctx.fill();
+          }
+        }
+        ctx.strokeStyle = lineColor;
+        ctx.lineWidth = 0.5;
+        for (let y = gridSpacing; y < h; y += gridSpacing) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(w, y);
+          ctx.stroke();
+        }
+        for (let x = gridSpacing; x < w; x += gridSpacing) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, h);
+          ctx.stroke();
+        }
+      }
+
+      function drawParticles() {
+        for (const p of particles) {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(0,255,255,${p.alpha})`;
+          ctx.fill();
+          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 6);
+          grad.addColorStop(0, `rgba(0,255,255,${p.alpha * 0.2})`);
+          grad.addColorStop(1, 'rgba(0,255,255,0)');
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r * 6, 0, Math.PI * 2);
+          ctx.fillStyle = grad;
+          ctx.fill();
+        }
+      }
+
+      function animate() {
+        drawGrid();
+        drawParticles();
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+
+    // ── Render on load ──
     renderAccounts();
   </script>
 </body>
-        </html>
+</html>
