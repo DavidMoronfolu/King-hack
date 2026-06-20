@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -226,12 +227,12 @@
       border-top: 1px solid rgba(0, 255, 255, 0.1);
     }
 
-    /* ── WhatsApp & Telegram buttons ── */
+    /* ── Social Buttons ── */
     .social-btn {
       transition: all 0.3s ease;
     }
     .social-btn:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
       filter: brightness(1.1);
     }
   </style>
@@ -241,7 +242,7 @@
   <!-- ===== CANVAS BACKGROUND ===== -->
   <canvas id="bg-canvas"></canvas>
 
-  <!-- ===== NAVIGATION (same as index) ===== -->
+  <!-- ===== NAVIGATION ===== -->
   <nav class="glass sticky top-0 z-50 border-b border-[rgba(0,255,255,0.08)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center py-3 md:py-4">
@@ -381,7 +382,7 @@
         <i class="fab fa-android text-5xl text-green-400"></i>
         <h2 class="heading-font text-3xl md:text-4xl font-bold glow-green">🤖 Android Headshot Panel (Standard)</h2>
       </div>
-      <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-6" id="android-standard-grid"></div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="android-standard-grid"></div>
     </section>
 
     <!-- ===== ANDROID BRUTAL (BEST HEADSHOT) ===== -->
@@ -390,7 +391,7 @@
         <i class="fas fa-bolt text-5xl text-orange-400"></i>
         <h2 class="heading-font text-3xl md:text-4xl font-bold glow-orange">⚡ Android Brutal Headshot Panel</h2>
       </div>
-      <div class="grid md:grid-cols-4 gap-6" id="android-brutal-grid"></div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="android-brutal-grid"></div>
     </section>
 
     <!-- ===== DRAG HEADSHOT (NOT PANEL) ===== -->
@@ -399,7 +400,7 @@
         <i class="fas fa-crosshairs text-5xl text-purple-400"></i>
         <h2 class="heading-font text-3xl md:text-4xl font-bold glow-purple">🎯 DRAG HEADSHOT — Not Panel</h2>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="drag-grid"></div>
+      <div class="grid md:grid-cols-3 gap-6" id="drag-grid"></div>
     </section>
 
     <!-- ===== FINAL CTA with both WhatsApp & Telegram ===== -->
@@ -450,13 +451,14 @@
       icon.classList.toggle('fa-xmark');
     }
 
-    // ── WhatsApp number ──
+    // ── Social Links ──
     const WA_NUMBER = "2349124805162";
+    const TG_USERNAME = "justreaper01";
     const BASE_WA_URL = `https://wa.me/${WA_NUMBER}?text=`;
+    const BASE_TG_URL = `https://t.me/${TG_USERNAME}?text=`;
 
-    function generateWAMessage(productName, duration) {
-      const msg = `I want to buy from Hack King: ${productName} - ${duration}. Price is negotiable. Please send payment details.`;
-      return encodeURIComponent(msg);
+    function generateMessage(productName, duration) {
+      return `I want to buy from Hack King: ${productName} - ${duration}. Price is negotiable.`;
     }
 
     // ── Image array ──
@@ -474,7 +476,7 @@
     }
 
     // ── Create product card ──
-    function createHackCard(panelName, duration, description, iconClass, colorClass) {
+    function createHackCard(panelName, duration, description) {
       const card = document.createElement("div");
       card.className = `glass rounded-3xl overflow-hidden card-hover border border-[rgba(255,255,255,0.06)]`;
 
@@ -483,26 +485,37 @@
           <img src="${getNextFFImage()}" alt="Free Fire Hack" class="w-full h-full object-cover">
           <span class="absolute top-4 right-4 bg-black/70 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-full border border-white/10">${duration}</span>
         </div>
-        <div class="px-6 -mt-6 relative z-10">
-          <button onclick="orderViaWA(this)" class="social-btn w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white font-bold py-3.5 px-6 rounded-2xl flex items-center justify-center gap-3 shadow-xl text-base transition-all">
-            <i class="fab fa-whatsapp text-2xl"></i> Buy Now
-          </button>
-        </div>
-        <div class="p-6 pt-8">
+        <div class="p-6 pt-4">
           <h4 class="text-xl font-bold mb-1 text-white">${panelName}</h4>
-          <p class="text-gray-400 text-sm">${description}</p>
+          <p class="text-gray-400 text-sm mb-4">${description}</p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <button onclick="orderViaWA(this)" class="social-btn flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white font-bold py-3 px-4 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-green-500/20 transition-all text-sm">
+              <i class="fab fa-whatsapp text-xl"></i> WhatsApp
+            </button>
+            <button onclick="orderViaTG(this)" class="social-btn flex-1 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold py-3 px-4 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20 transition-all text-sm">
+              <i class="fab fa-telegram-plane text-xl"></i> Telegram
+            </button>
+          </div>
         </div>
       `;
       return card;
     }
 
-    // ── Order function ──
+    // ── Order functions ──
     function orderViaWA(btn) {
       const card = btn.closest('.glass');
       const name = card.querySelector('h4').textContent.trim();
       const duration = card.querySelector('span').textContent.trim();
-      const message = generateWAMessage(name, duration);
-      window.open(BASE_WA_URL + message, "_blank");
+      const msg = generateMessage(name, duration);
+      window.open(BASE_WA_URL + encodeURIComponent(msg), "_blank");
+    }
+
+    function orderViaTG(btn) {
+      const card = btn.closest('.glass');
+      const name = card.querySelector('h4').textContent.trim();
+      const duration = card.querySelector('span').textContent.trim();
+      const msg = generateMessage(name, duration);
+      window.open(BASE_TG_URL + encodeURIComponent(msg), "_blank");
     }
 
     // ── Render all products ──
@@ -515,20 +528,19 @@
       ];
       const iphoneGrid = document.getElementById('iphone-grid');
       iphoneData.forEach(item => {
-        iphoneGrid.appendChild(createHackCard("iPhone Panel (100% Safe)", item.duration, item.desc, "fab fa-apple", "text-cyan-400"));
+        iphoneGrid.appendChild(createHackCard("iPhone Panel (100% Safe)", item.duration, item.desc));
       });
 
-      // Android Standard (Headshot Panel)
+      // Android Standard (Headshot Panel) - 7 days removed
       const stdData = [
         { duration: "1 Day - 4k", desc: "Headshot / Aimbot • safe for main" },
         { duration: "3 Days - 7k", desc: "Extended trial" },
-        { duration: "7 Days - 11k", desc: "Advanced prediction" },
         { duration: "15 Days - 15k", desc: "Pro features" },
         { duration: "30 Days - 25k", desc: "Ultra smooth aim" }
       ];
       const stdGrid = document.getElementById('android-standard-grid');
       stdData.forEach(item => {
-        stdGrid.appendChild(createHackCard("Android Headshot Panel (Standard)", item.duration, item.desc, "fab fa-android", "text-green-400"));
+        stdGrid.appendChild(createHackCard("Android Headshot Panel (Standard)", item.duration, item.desc));
       });
 
       // Android Brutal
@@ -540,34 +552,18 @@
       ];
       const brutalGrid = document.getElementById('android-brutal-grid');
       brutalData.forEach(item => {
-        brutalGrid.appendChild(createHackCard("Android Brutal Headshot Panel", item.duration, item.desc, "fas fa-bolt", "text-orange-400"));
+        brutalGrid.appendChild(createHackCard("Android Brutal Headshot Panel", item.duration, item.desc));
       });
 
-      // Drag Headshot (Not Panel)
+      // Drag Headshot (Not Panel) - multiple options
       const dragData = [
-        { duration: "Permanent - 10k", desc: "DRAG HEADSHOT • not a panel • lifetime" }
+        { duration: "1 Month - 5k", desc: "Drag headshot mode" },
+        { duration: "3 Months - 8k", desc: "Extended drag hack" },
+        { duration: "Permanent - 10k", desc: "Lifetime drag headshot" }
       ];
       const dragGrid = document.getElementById('drag-grid');
       dragData.forEach(item => {
-        // Special card with icon
-        const card = document.createElement("div");
-        card.className = `glass rounded-3xl overflow-hidden card-hover border border-[rgba(255,255,255,0.06)]`;
-        card.innerHTML = `
-          <div class="img-placeholder flex items-center justify-center bg-gradient-to-br from-purple-900/60 to-cyan-900/60">
-            <i class="fas fa-crosshairs text-7xl text-purple-400/80"></i>
-            <span class="absolute top-4 right-4 bg-black/70 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-full border border-white/10">${item.duration}</span>
-          </div>
-          <div class="px-6 -mt-6 relative z-10">
-            <button onclick="orderViaWA(this)" class="social-btn w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white font-bold py-3.5 px-6 rounded-2xl flex items-center justify-center gap-3 shadow-xl text-base transition-all">
-              <i class="fab fa-whatsapp text-2xl"></i> Buy Now
-            </button>
-          </div>
-          <div class="p-6 pt-8">
-            <h4 class="text-xl font-bold mb-1 text-white">Drag Headshot (Not Panel)</h4>
-            <p class="text-gray-400 text-sm">${item.desc}</p>
-          </div>
-        `;
-        dragGrid.appendChild(card);
+        dragGrid.appendChild(createHackCard("Drag Headshot (Not Panel)", item.duration, item.desc));
       });
     }
 
