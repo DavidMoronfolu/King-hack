@@ -211,9 +211,12 @@
       overflow: hidden;
       position: relative;
       background: radial-gradient(circle at 30% 30%, rgba(0,255,255,0.05), transparent 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .img-placeholder i {
-      filter: drop-shadow(0 0 20px rgba(0,255,255,0.1));
+      filter: drop-shadow(0 0 30px rgba(0,255,255,0.1));
     }
 
     /* ── Mobile menu ── */
@@ -239,7 +242,7 @@
   <!-- ===== CANVAS BACKGROUND ===== -->
   <canvas id="bg-canvas"></canvas>
 
-  <!-- ===== NAVIGATION (glass) ===== -->
+  <!-- ===== NAVIGATION ===== -->
   <nav class="glass sticky top-0 z-50 border-b border-[rgba(0,255,255,0.08)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center py-3 md:py-4">
@@ -330,15 +333,13 @@
       </p>
 
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="https://wa.me/2349169939848" target="_blank"
-           class="group relative px-8 py-3 rounded-full font-semibold text-base flex items-center gap-3 transition-all overflow-hidden border border-green-500/30 hover:border-green-400">
-          <span class="absolute inset-0 bg-green-500/5 rounded-full"></span>
-          <span class="relative text-white flex items-center gap-3"><i class="fab fa-whatsapp text-green-400"></i> WhatsApp</span>
+        <a href="#freefire-grid" class="group relative px-8 py-3 rounded-full font-semibold text-base flex items-center gap-3 transition-all overflow-hidden border border-orange-500/30 hover:border-orange-400">
+          <span class="absolute inset-0 bg-orange-500/5 rounded-full"></span>
+          <span class="relative text-white flex items-center gap-3"><i class="fas fa-fire text-orange-400"></i> Free Fire</span>
         </a>
-        <a href="https://t.me/justreaper01" target="_blank"
-           class="group relative px-8 py-3 rounded-full font-semibold text-base flex items-center gap-3 transition-all overflow-hidden border border-sky-500/30 hover:border-sky-400">
-          <span class="absolute inset-0 bg-sky-500/5 rounded-full"></span>
-          <span class="relative text-white flex items-center gap-3"><i class="fab fa-telegram-plane text-sky-400"></i> Telegram</span>
+        <a href="#codm-grid" class="group relative px-8 py-3 rounded-full font-semibold text-base flex items-center gap-3 transition-all overflow-hidden border border-indigo-500/30 hover:border-indigo-400">
+          <span class="absolute inset-0 bg-indigo-500/5 rounded-full"></span>
+          <span class="relative text-white flex items-center gap-3"><i class="fas fa-gamepad text-indigo-400"></i> CODM</span>
         </a>
       </div>
 
@@ -348,38 +349,36 @@
     </div>
   </header>
 
-  <!-- ===== BONUS BANNER ===== -->
-  <div class="relative z-10 max-w-7xl mx-auto px-4 -mt-4">
-    <div class="glass-light px-6 py-4 rounded-2xl border border-green-500/10 text-center">
-      <p class="text-sm font-bold text-green-400">
-        <i class="fas fa-gift mr-2"></i> BONUS: GET 10% OFF ON YOUR FIRST PURCHASE
-      </p>
-    </div>
-  </div>
-
   <!-- ===== MAIN CONTENT ===== -->
   <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
-    <!-- Free Fire Prime Accounts -->
-    <div class="mb-20">
+    <!-- Bonus Banner -->
+    <div class="text-center mb-12">
+      <div class="inline-block glass-light px-6 py-3 rounded-full border border-green-500/10">
+        <p class="text-sm text-green-400"><i class="fas fa-gift text-green-400 mr-2"></i> BONUS: GET <span class="font-bold">10% OFF</span> ON YOUR FIRST PURCHASE</p>
+      </div>
+    </div>
+
+    <!-- ===== FREE FIRE PRIME ACCOUNTS ===== -->
+    <section id="freefire-grid" class="mb-20">
       <div class="flex items-center gap-4 mb-8">
         <i class="fas fa-fire text-5xl text-orange-400"></i>
         <h2 class="heading-font text-3xl md:text-4xl font-bold glow-orange">🔥 FREE FIRE PRIME ACCOUNTS</h2>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="freefire-grid"></div>
-    </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="freefire-container"></div>
+    </section>
 
-    <!-- CODM Accounts -->
-    <div>
+    <!-- ===== CODM ACCOUNTS ===== -->
+    <section id="codm-grid" class="mb-20">
       <div class="flex items-center gap-4 mb-8">
         <i class="fas fa-gamepad text-5xl text-indigo-400"></i>
         <h2 class="heading-font text-3xl md:text-4xl font-bold" style="text-shadow: 0 0 12px rgba(99,102,241,0.5);">🎮 CODM ACCOUNTS</h2>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="codm-grid"></div>
-    </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="codm-container"></div>
+    </section>
 
-    <!-- Final CTA -->
-    <div class="text-center mt-16">
+    <!-- ===== FINAL CTA with both WhatsApp & Telegram ===== -->
+    <div class="text-center mt-12">
       <div class="glass p-10 rounded-3xl border border-cyan-500/10 max-w-3xl mx-auto">
         <h3 class="heading-font text-3xl font-bold mb-4">Ready for your own god‑tier account?</h3>
         <p class="text-gray-400 mb-6">Choose any account above and get 10% off your first purchase.</p>
@@ -436,6 +435,20 @@
       return `I want to buy from Hack King: ${accountName}. Clean account + I want the 10% first purchase bonus. Ready for instant login. Please send payment details and account credentials.`;
     }
 
+    // ── Image array (placeholders) ──
+    const accountImages = [
+      "free fire hack 1.jpg", "free fire hack 2.jpg", "free fire hack 3.jpg",
+      "free fire hack 4.jpg", "free fire hack 5.jpg", "free fire hack 6.jpg",
+      "free fire hack 7.jpg", "free fire hack 8.jpg", "free fire hack 9.jpg"
+    ];
+    let imageIndex = 0;
+
+    function getNextImage() {
+      const src = accountImages[imageIndex % accountImages.length];
+      imageIndex++;
+      return src;
+    }
+
     // ── Account Data ──
     const freeFireAccounts = [
       { tier: "TIER 1", name: "Starter Prime Account", desc: "Freshly created Prime account with elite pass unlocked, starter legendary skin bundle, exclusive emotes and completely clean play history.", icon: "fas fa-seedling" },
@@ -462,28 +475,21 @@
     // ── Create Account Card ──
     function createAccountCard(tier, name, desc, icon) {
       const card = document.createElement("div");
-      card.className = "glass rounded-3xl overflow-hidden card-hover border border-[rgba(255,255,255,0.06)]";
+      card.className = `glass rounded-3xl overflow-hidden card-hover border border-[rgba(255,255,255,0.06)]`;
 
       card.innerHTML = `
-        <!-- Picture links to Home -->
-        <a href="index.html" class="block">
-          <div class="img-placeholder">
-            <i class="${icon} text-8xl text-white/90 drop-shadow-2xl"></i>
-            <span class="absolute top-4 right-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-xs font-black px-4 py-1 rounded-3xl backdrop-blur-md shadow-inner">${tier}</span>
-          </div>
-        </a>
-
-        <!-- Two buttons: WhatsApp & Telegram -->
+        <div class="img-placeholder">
+          <i class="${icon} text-8xl text-white/90 drop-shadow-2xl"></i>
+          <span class="absolute top-4 right-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-xs font-black px-4 py-1 rounded-3xl backdrop-blur-md shadow-inner">${tier}</span>
+        </div>
         <div class="p-6 pt-4">
-          <h4 class="text-2xl font-bold mb-2 text-white">${name}</h4>
-          <p class="text-gray-400 leading-relaxed mb-4">${desc}</p>
+          <h4 class="text-xl font-bold mb-1 text-white">${name}</h4>
+          <p class="text-gray-400 text-sm mb-4">${desc}</p>
           <div class="flex flex-col sm:flex-row gap-3">
-            <button onclick="orderViaWA(this)" 
-                    class="social-btn flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white font-bold py-3 px-4 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-green-500/20 transition-all text-sm">
+            <button onclick="orderViaWA(this)" class="social-btn flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white font-bold py-3 px-4 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-green-500/20 transition-all text-sm">
               <i class="fab fa-whatsapp text-xl"></i> WhatsApp
             </button>
-            <button onclick="orderViaTG(this)" 
-                    class="social-btn flex-1 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold py-3 px-4 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20 transition-all text-sm">
+            <button onclick="orderViaTG(this)" class="social-btn flex-1 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold py-3 px-4 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20 transition-all text-sm">
               <i class="fab fa-telegram-plane text-xl"></i> Telegram
             </button>
           </div>
@@ -492,35 +498,35 @@
       return card;
     }
 
-    // ── Order Functions ──
+    // ── Order functions ──
     function orderViaWA(btn) {
       const card = btn.closest('.glass');
-      const accountName = card.querySelector('h4').textContent.trim();
-      const msg = generateMessage(accountName);
+      const name = card.querySelector('h4').textContent.trim();
+      const msg = generateMessage(name);
       window.open(BASE_WA_URL + encodeURIComponent(msg), "_blank");
     }
 
     function orderViaTG(btn) {
       const card = btn.closest('.glass');
-      const accountName = card.querySelector('h4').textContent.trim();
-      const msg = generateMessage(accountName);
+      const name = card.querySelector('h4').textContent.trim();
+      const msg = generateMessage(name);
       window.open(BASE_TG_URL + encodeURIComponent(msg), "_blank");
     }
 
-    // ── Render Accounts ──
+    // ── Render all accounts ──
     function renderAccounts() {
-      const ffGrid = document.getElementById("freefire-grid");
+      const ffContainer = document.getElementById('freefire-container');
       freeFireAccounts.forEach(acc => {
-        ffGrid.appendChild(createAccountCard(acc.tier, acc.name, acc.desc, acc.icon));
+        ffContainer.appendChild(createAccountCard(acc.tier, acc.name, acc.desc, acc.icon));
       });
 
-      const codmGrid = document.getElementById("codm-grid");
+      const codmContainer = document.getElementById('codm-container');
       codmAccounts.forEach(acc => {
-        codmGrid.appendChild(createAccountCard(acc.tier, acc.name, acc.desc, acc.icon));
+        codmContainer.appendChild(createAccountCard(acc.tier, acc.name, acc.desc, acc.icon));
       });
     }
 
-    // ── Canvas Background (same as index & hacks) ──
+    // ── Canvas Background ──
     (function initCanvas() {
       const canvas = document.getElementById('bg-canvas');
       const ctx = canvas.getContext('2d');
